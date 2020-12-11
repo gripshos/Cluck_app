@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D8A213A22583CBD000347F9F /* TendrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213A12583CBD000347F9F /* TendrApp.swift */; };
+		D8A213A42583CBD000347F9F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213A32583CBD000347F9F /* ContentView.swift */; };
+		D8A213A62583CBD100347F9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A213A52583CBD100347F9F /* Assets.xcassets */; };
+		D8A213A92583CBD100347F9F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A213A82583CBD100347F9F /* Preview Assets.xcassets */; };
+		D8A213B42583CBD100347F9F /* TendrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213B32583CBD100347F9F /* TendrTests.swift */; };
+		D8A213BF2583CBD100347F9F /* TendrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213BE2583CBD100347F9F /* TendrUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D8A213B02583CBD100347F9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8A213962583CBD000347F9F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8A2139D2583CBD000347F9F;
+			remoteInfo = Tendr;
+		};
+		D8A213BB2583CBD100347F9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8A213962583CBD000347F9F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8A2139D2583CBD000347F9F;
+			remoteInfo = Tendr;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D8A2139E2583CBD000347F9F /* Tendr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tendr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8A213A12583CBD000347F9F /* TendrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendrApp.swift; sourceTree = "<group>"; };
+		D8A213A32583CBD000347F9F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D8A213A52583CBD100347F9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D8A213A82583CBD100347F9F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D8A213AA2583CBD100347F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8A213AF2583CBD100347F9F /* TendrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TendrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8A213B32583CBD100347F9F /* TendrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendrTests.swift; sourceTree = "<group>"; };
+		D8A213B52583CBD100347F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8A213BA2583CBD100347F9F /* TendrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TendrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8A213BE2583CBD100347F9F /* TendrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendrUITests.swift; sourceTree = "<group>"; };
+		D8A213C02583CBD100347F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D8A2139B2583CBD000347F9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8A213AC2583CBD100347F9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8A213B72583CBD100347F9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D8A213952583CBD000347F9F = {
+			isa = PBXGroup;
+			children = (
+				D8A213A02583CBD000347F9F /* Tendr */,
+				D8A213B22583CBD100347F9F /* TendrTests */,
+				D8A213BD2583CBD100347F9F /* TendrUITests */,
+				D8A2139F2583CBD000347F9F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D8A2139F2583CBD000347F9F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D8A2139E2583CBD000347F9F /* Tendr.app */,
+				D8A213AF2583CBD100347F9F /* TendrTests.xctest */,
+				D8A213BA2583CBD100347F9F /* TendrUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D8A213A02583CBD000347F9F /* Tendr */ = {
+			isa = PBXGroup;
+			children = (
+				D8A213A12583CBD000347F9F /* TendrApp.swift */,
+				D8A213A32583CBD000347F9F /* ContentView.swift */,
+				D8A213A52583CBD100347F9F /* Assets.xcassets */,
+				D8A213AA2583CBD100347F9F /* Info.plist */,
+				D8A213A72583CBD100347F9F /* Preview Content */,
+			);
+			path = Tendr;
+			sourceTree = "<group>";
+		};
+		D8A213A72583CBD100347F9F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D8A213A82583CBD100347F9F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D8A213B22583CBD100347F9F /* TendrTests */ = {
+			isa = PBXGroup;
+			children = (
+				D8A213B32583CBD100347F9F /* TendrTests.swift */,
+				D8A213B52583CBD100347F9F /* Info.plist */,
+			);
+			path = TendrTests;
+			sourceTree = "<group>";
+		};
+		D8A213BD2583CBD100347F9F /* TendrUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D8A213BE2583CBD100347F9F /* TendrUITests.swift */,
+				D8A213C02583CBD100347F9F /* Info.plist */,
+			);
+			path = TendrUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D8A2139D2583CBD000347F9F /* Tendr */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8A213C32583CBD100347F9F /* Build configuration list for PBXNativeTarget "Tendr" */;
+			buildPhases = (
+				D8A2139A2583CBD000347F9F /* Sources */,
+				D8A2139B2583CBD000347F9F /* Frameworks */,
+				D8A2139C2583CBD000347F9F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tendr;
+			productName = Tendr;
+			productReference = D8A2139E2583CBD000347F9F /* Tendr.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D8A213AE2583CBD100347F9F /* TendrTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8A213C62583CBD100347F9F /* Build configuration list for PBXNativeTarget "TendrTests" */;
+			buildPhases = (
+				D8A213AB2583CBD100347F9F /* Sources */,
+				D8A213AC2583CBD100347F9F /* Frameworks */,
+				D8A213AD2583CBD100347F9F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8A213B12583CBD100347F9F /* PBXTargetDependency */,
+			);
+			name = TendrTests;
+			productName = TendrTests;
+			productReference = D8A213AF2583CBD100347F9F /* TendrTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D8A213B92583CBD100347F9F /* TendrUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8A213C92583CBD100347F9F /* Build configuration list for PBXNativeTarget "TendrUITests" */;
+			buildPhases = (
+				D8A213B62583CBD100347F9F /* Sources */,
+				D8A213B72583CBD100347F9F /* Frameworks */,
+				D8A213B82583CBD100347F9F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8A213BC2583CBD100347F9F /* PBXTargetDependency */,
+			);
+			name = TendrUITests;
+			productName = TendrUITests;
+			productReference = D8A213BA2583CBD100347F9F /* TendrUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D8A213962583CBD000347F9F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					D8A2139D2583CBD000347F9F = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					D8A213AE2583CBD100347F9F = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = D8A2139D2583CBD000347F9F;
+					};
+					D8A213B92583CBD100347F9F = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = D8A2139D2583CBD000347F9F;
+					};
+				};
+			};
+			buildConfigurationList = D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Tendr" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D8A213952583CBD000347F9F;
+			productRefGroup = D8A2139F2583CBD000347F9F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D8A2139D2583CBD000347F9F /* Tendr */,
+				D8A213AE2583CBD100347F9F /* TendrTests */,
+				D8A213B92583CBD100347F9F /* TendrUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D8A2139C2583CBD000347F9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8A213A92583CBD100347F9F /* Preview Assets.xcassets in Resources */,
+				D8A213A62583CBD100347F9F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8A213AD2583CBD100347F9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8A213B82583CBD100347F9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D8A2139A2583CBD000347F9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8A213A42583CBD000347F9F /* ContentView.swift in Sources */,
+				D8A213A22583CBD000347F9F /* TendrApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8A213AB2583CBD100347F9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8A213B42583CBD100347F9F /* TendrTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8A213B62583CBD100347F9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8A213BF2583CBD100347F9F /* TendrUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D8A213B12583CBD100347F9F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8A2139D2583CBD000347F9F /* Tendr */;
+			targetProxy = D8A213B02583CBD100347F9F /* PBXContainerItemProxy */;
+		};
+		D8A213BC2583CBD100347F9F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8A2139D2583CBD000347F9F /* Tendr */;
+			targetProxy = D8A213BB2583CBD100347F9F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D8A213C12583CBD100347F9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D8A213C22583CBD100347F9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D8A213C42583CBD100347F9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Tendr/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Tendr/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SAG.Tendr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D8A213C52583CBD100347F9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Tendr/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Tendr/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SAG.Tendr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D8A213C72583CBD100347F9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TendrTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SAG.TendrTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tendr.app/Tendr";
+			};
+			name = Debug;
+		};
+		D8A213C82583CBD100347F9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TendrTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SAG.TendrTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tendr.app/Tendr";
+			};
+			name = Release;
+		};
+		D8A213CA2583CBD100347F9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TendrUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SAG.TendrUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Tendr;
+			};
+			name = Debug;
+		};
+		D8A213CB2583CBD100347F9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TendrUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SAG.TendrUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Tendr;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Tendr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8A213C12583CBD100347F9F /* Debug */,
+				D8A213C22583CBD100347F9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8A213C32583CBD100347F9F /* Build configuration list for PBXNativeTarget "Tendr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8A213C42583CBD100347F9F /* Debug */,
+				D8A213C52583CBD100347F9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8A213C62583CBD100347F9F /* Build configuration list for PBXNativeTarget "TendrTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8A213C72583CBD100347F9F /* Debug */,
+				D8A213C82583CBD100347F9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8A213C92583CBD100347F9F /* Build configuration list for PBXNativeTarget "TendrUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8A213CA2583CBD100347F9F /* Debug */,
+				D8A213CB2583CBD100347F9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D8A213962583CBD000347F9F /* Project object */;
+}
