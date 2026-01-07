@@ -1,8 +1,8 @@
-# 🍗 Tendr
+# 🍗 Cluck
 
 **Swipe right on chicken tenders.**
 
-Tendr is a Tinder-style iOS app that helps you discover nearby restaurants serving chicken tenders. Swipe through options, save your favorites, and get directions—all with a playful, modern interface designed for one-handed use.
+Cluck is a swipe-style iOS app that helps you discover nearby restaurants serving chicken tenders. Swipe through options, save your favorites, and get directions—all with a playful, modern interface designed for one-handed use.
 
 ![iOS 17+](https://img.shields.io/badge/iOS-17%2B-blue)
 ![SwiftUI](https://img.shields.io/badge/SwiftUI-5.0-orange)
@@ -34,8 +34,8 @@ Tendr is a Tinder-style iOS app that helps you discover nearby restaurants servi
 ## Architecture
 
 ```
-Tendr/
-├── TendrApp.swift          # App entry point
+Cluck/
+├── CluckApp.swift          # App entry point
 ├── ContentView.swift       # Main view with all components
 │   ├── Models              # Tender data model
 │   ├── LocationManager     # CoreLocation wrapper
