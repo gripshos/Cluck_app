@@ -2,16 +2,20 @@
 //  TendrApp.swift
 //  Tendr
 //
-//  Created by Steven Gripshover on 12/11/20.
+//  App entry point with SwiftData configuration
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct TendrApp: App {
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
+        // Configure SwiftData model container
+        .modelContainer(for: FavoriteRestaurant.self)
     }
 }

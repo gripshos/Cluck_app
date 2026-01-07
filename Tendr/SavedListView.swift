@@ -12,42 +12,71 @@ struct SavedListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \FavoriteRestaurant.savedDate, order: .reverse) private var favorites: [FavoriteRestaurant]
     
-    @State private var showDetail = false
     @State private var selectedTender: Tender?
     
     var body: some View {
         NavigationStack {
-            Group {
+            ZStack {
+                // Vibrant gradient background
+                LinearGradient(
+                    colors: [
+                        Color(red: 1.0, green: 0.2, blue: 0.4),
+                        Color(red: 1.0, green: 0.4, blue: 0.5),
+                        Color(red: 1.0, green: 0.6, blue: 0.6)
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+                
                 if favorites.isEmpty {
                     ContentUnavailableView(
                         "No Saved Restaurants",
                         systemImage: "heart.slash",
                         description: Text("Swipe right on restaurants to save them here")
                     )
+                    .foregroundStyle(.white)
                 } else {
                     List {
                         ForEach(favorites) { favorite in
-                            Button {
-                                selectedTender = favorite.asTender
-                                showDetail = true
-                            } label: {
-                                SavedRestaurantRow(favorite: favorite)
-                            }
+                            SavedRestaurantRow(favorite: favorite)
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    selectedTender = favorite.asTender
+                                }
+                                .listRowBackground(Color.white.opacity(0.9))
                         }
                         .onDelete(perform: deleteRestaurants)
                     }
+                    .scrollContentBackground(.hidden)
                 }
             }
-            .navigationTitle("Saved Restaurants")
+            .navigationTitle("💕 Saved")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarBackground(
+                LinearGradient(
+                    colors: [
+                        Color(red: 1.0, green: 0.2, blue: 0.4),
+                        Color(red: 1.0, green: 0.3, blue: 0.45)
+                    ],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                ),
+                for: .navigationBar
+            )
+            .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbar {
                 if !favorites.isEmpty {
-                    EditButton()
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        EditButton()
+                            .foregroundStyle(.white)
+                            .fontWeight(.semibold)
+                    }
                 }
             }
-            .sheet(isPresented: $showDetail) {
-                if let selectedTender {
-                    ChatDetailView(tender: selectedTender, modelContext: modelContext)
-                }
+            .sheet(item: $selectedTender) { tender in
+                ChatDetailView(tender: tender, modelContext: modelContext)
             }
         }
     }

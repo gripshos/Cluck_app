@@ -86,27 +86,66 @@ struct ChatDetailView: View {
                         
                         // Phone number
                         if let phoneNumber = tender.phoneNumber {
-                            VStack(alignment: .leading, spacing: 8) {
-                                Label("Phone", systemImage: "phone.fill")
-                                    .font(.headline)
-                                
-                                Link(phoneNumber, destination: URL(string: "tel:\(phoneNumber)")!)
-                                    .foregroundStyle(.blue)
+                            Button {
+                                if let url = URL(string: "tel:\(phoneNumber)") {
+                                    UIApplication.shared.open(url)
+                                }
+                            } label: {
+                                HStack {
+                                    Label(phoneNumber, systemImage: "phone.fill")
+                                        .font(.headline)
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                        .foregroundStyle(.secondary)
+                                }
+                                .padding()
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
                             }
+                            .foregroundStyle(.primary)
                         }
                         
                         // Website
-                        VStack(alignment: .leading, spacing: 8) {
-                            Label("Website", systemImage: "globe")
-                                .font(.headline)
-                            
-                            if let websiteURL = tender.websiteURL {
-                                Link(websiteURL.absoluteString, destination: websiteURL)
-                                    .foregroundStyle(.blue)
-                            } else {
-                                // Fallback to Google search
-                                Link("Search on Google", destination: googleSearchURL)
-                                    .foregroundStyle(.blue)
+                        if let websiteURL = tender.websiteURL {
+                            Button {
+                                UIApplication.shared.open(websiteURL)
+                            } label: {
+                                Label("Visit Website", systemImage: "globe")
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(
+                                        LinearGradient(
+                                            colors: [
+                                                Color(red: 1.0, green: 0.3, blue: 0.2),
+                                                Color(red: 1.0, green: 0.5, blue: 0.3)
+                                            ],
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        )
+                                    )
+                                    .foregroundStyle(.white)
+                                    .cornerRadius(10)
+                            }
+                        } else {
+                            // Fallback to Google search
+                            Button {
+                                UIApplication.shared.open(googleSearchURL)
+                            } label: {
+                                Label("Search on Google", systemImage: "magnifyingglass")
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(
+                                        LinearGradient(
+                                            colors: [
+                                                Color(red: 1.0, green: 0.3, blue: 0.2),
+                                                Color(red: 1.0, green: 0.5, blue: 0.3)
+                                            ],
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        )
+                                    )
+                                    .foregroundStyle(.white)
+                                    .cornerRadius(10)
                             }
                         }
                         
@@ -121,9 +160,16 @@ struct ChatDetailView: View {
                                 Label("Get Directions", systemImage: "arrow.triangle.turn.up.right.circle.fill")
                                     .frame(maxWidth: .infinity)
                                     .padding()
-                                    .background(Color.blue)
+                                    .background(
+                                        LinearGradient(
+                                            colors: [Color.blue, Color.blue.opacity(0.8)],
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        )
+                                    )
                                     .foregroundStyle(.white)
                                     .cornerRadius(10)
+                                    .fontWeight(.semibold)
                             }
                             
                             // Save/Unsave button
@@ -136,9 +182,18 @@ struct ChatDetailView: View {
                                 )
                                 .frame(maxWidth: .infinity)
                                 .padding()
-                                .background(isFavorite ? Color.red : Color.green)
+                                .background(
+                                    LinearGradient(
+                                        colors: isFavorite ? 
+                                            [Color.red, Color.red.opacity(0.8)] :
+                                            [Color(red: 1.0, green: 0.3, blue: 0.2), Color(red: 1.0, green: 0.5, blue: 0.3)],
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
                                 .foregroundStyle(.white)
                                 .cornerRadius(10)
+                                .fontWeight(.semibold)
                             }
                         }
                     }

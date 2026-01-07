@@ -8,13 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		D852C2EF2F0B2AA10089AC29 /* V1_ENHANCEMENTS.md in Resources */ = {isa = PBXBuildFile; fileRef = D852C2EE2F0B2AA10089AC29 /* V1_ENHANCEMENTS.md */; };
+		D86FB26D2F0D6E9500269EFD /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB26C2F0D6E9500269EFD /* AppState.swift */; };
+		D86FB26F2F0D6E9B00269EFD /* Tender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB26E2F0D6E9B00269EFD /* Tender.swift */; };
+		D86FB2712F0D6EA300269EFD /* FavoriteRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB2702F0D6EA300269EFD /* FavoriteRestaurant.swift */; };
+		D86FB2732F0D6EA900269EFD /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB2722F0D6EA900269EFD /* LocationManager.swift */; };
+		D86FB2752F0D6EB800269EFD /* RestaurantSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB2742F0D6EB800269EFD /* RestaurantSearchService.swift */; };
+		D86FB2772F0D6EBF00269EFD /* TenderDeckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB2762F0D6EBF00269EFD /* TenderDeckViewModel.swift */; };
+		D86FB2792F0D6ECC00269EFD /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB2782F0D6ECC00269EFD /* RootView.swift */; };
+		D86FB27B2F0D6EDB00269EFD /* SwipeDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB27A2F0D6EDB00269EFD /* SwipeDeckView.swift */; };
+		D86FB27D2F0D6EE800269EFD /* TenderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB27C2F0D6EE800269EFD /* TenderCardView.swift */; };
+		D86FB27F2F0D6EF600269EFD /* SavedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB27E2F0D6EF600269EFD /* SavedListView.swift */; };
+		D86FB2812F0D6F0D00269EFD /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB2802F0D6F0D00269EFD /* ChatDetailView.swift */; };
+		D86FB2832F0D6F4F00269EFD /* FIXES_APPLIED.md in Resources */ = {isa = PBXBuildFile; fileRef = D86FB2822F0D6F4F00269EFD /* FIXES_APPLIED.md */; };
+		D86FB2852F0D9C6B00269EFD /* YelpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB2842F0D9C6B00269EFD /* YelpService.swift */; };
+		D86FB2872F0D9C7100269EFD /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB2862F0D9C7100269EFD /* Config.swift */; };
+		D86FB2892F0D9CD700269EFD /* YELP_SETUP_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = D86FB2882F0D9CD700269EFD /* YELP_SETUP_GUIDE.md */; };
+		D86FB28B2F0DA19B00269EFD /* CANVAS_PREVIEW_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = D86FB28A2F0DA19B00269EFD /* CANVAS_PREVIEW_GUIDE.md */; };
 		D8A213A22583CBD000347F9F /* TendrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213A12583CBD000347F9F /* TendrApp.swift */; };
-		D8A213A42583CBD000347F9F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213A32583CBD000347F9F /* ContentView.swift */; };
 		D8A213A62583CBD100347F9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A213A52583CBD100347F9F /* Assets.xcassets */; };
 		D8A213A92583CBD100347F9F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A213A82583CBD100347F9F /* Preview Assets.xcassets */; };
 		D8A213B42583CBD100347F9F /* TendrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213B32583CBD100347F9F /* TendrTests.swift */; };
 		D8A213BF2583CBD100347F9F /* TendrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213BE2583CBD100347F9F /* TendrUITests.swift */; };
 		D8B6CA352F0B275500A59D67 /* IMPLEMENTATION_NOTES.md in Resources */ = {isa = PBXBuildFile; fileRef = D8B6CA342F0B275500A59D67 /* IMPLEMENTATION_NOTES.md */; };
+		D8C4D0112F0DA3AD00CFA428 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C4D0102F0DA3AD00CFA428 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +52,22 @@
 
 /* Begin PBXFileReference section */
 		D852C2EE2F0B2AA10089AC29 /* V1_ENHANCEMENTS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = V1_ENHANCEMENTS.md; sourceTree = "<group>"; };
+		D86FB26C2F0D6E9500269EFD /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D86FB26E2F0D6E9B00269EFD /* Tender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tender.swift; sourceTree = "<group>"; };
+		D86FB2702F0D6EA300269EFD /* FavoriteRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRestaurant.swift; sourceTree = "<group>"; };
+		D86FB2722F0D6EA900269EFD /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		D86FB2742F0D6EB800269EFD /* RestaurantSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSearchService.swift; sourceTree = "<group>"; };
+		D86FB2762F0D6EBF00269EFD /* TenderDeckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenderDeckViewModel.swift; sourceTree = "<group>"; };
+		D86FB2782F0D6ECC00269EFD /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		D86FB27A2F0D6EDB00269EFD /* SwipeDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDeckView.swift; sourceTree = "<group>"; };
+		D86FB27C2F0D6EE800269EFD /* TenderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenderCardView.swift; sourceTree = "<group>"; };
+		D86FB27E2F0D6EF600269EFD /* SavedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedListView.swift; sourceTree = "<group>"; };
+		D86FB2802F0D6F0D00269EFD /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
+		D86FB2822F0D6F4F00269EFD /* FIXES_APPLIED.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = FIXES_APPLIED.md; sourceTree = "<group>"; };
+		D86FB2842F0D9C6B00269EFD /* YelpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpService.swift; sourceTree = "<group>"; };
+		D86FB2862F0D9C7100269EFD /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		D86FB2882F0D9CD700269EFD /* YELP_SETUP_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = YELP_SETUP_GUIDE.md; sourceTree = "<group>"; };
+		D86FB28A2F0DA19B00269EFD /* CANVAS_PREVIEW_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CANVAS_PREVIEW_GUIDE.md; sourceTree = "<group>"; };
 		D8A2139E2583CBD000347F9F /* Tendr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tendr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A213A12583CBD000347F9F /* TendrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendrApp.swift; sourceTree = "<group>"; };
 		D8A213A32583CBD000347F9F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +81,7 @@
 		D8A213BE2583CBD100347F9F /* TendrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendrUITests.swift; sourceTree = "<group>"; };
 		D8A213C02583CBD100347F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8B6CA342F0B275500A59D67 /* IMPLEMENTATION_NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = IMPLEMENTATION_NOTES.md; sourceTree = "<group>"; };
+		D8C4D0102F0DA3AD00CFA428 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +139,23 @@
 				D8A213A72583CBD100347F9F /* Preview Content */,
 				D8B6CA342F0B275500A59D67 /* IMPLEMENTATION_NOTES.md */,
 				D852C2EE2F0B2AA10089AC29 /* V1_ENHANCEMENTS.md */,
+				D86FB26C2F0D6E9500269EFD /* AppState.swift */,
+				D86FB26E2F0D6E9B00269EFD /* Tender.swift */,
+				D86FB2702F0D6EA300269EFD /* FavoriteRestaurant.swift */,
+				D86FB2722F0D6EA900269EFD /* LocationManager.swift */,
+				D86FB2742F0D6EB800269EFD /* RestaurantSearchService.swift */,
+				D86FB2762F0D6EBF00269EFD /* TenderDeckViewModel.swift */,
+				D86FB2782F0D6ECC00269EFD /* RootView.swift */,
+				D86FB27A2F0D6EDB00269EFD /* SwipeDeckView.swift */,
+				D86FB27C2F0D6EE800269EFD /* TenderCardView.swift */,
+				D86FB27E2F0D6EF600269EFD /* SavedListView.swift */,
+				D86FB2802F0D6F0D00269EFD /* ChatDetailView.swift */,
+				D86FB2822F0D6F4F00269EFD /* FIXES_APPLIED.md */,
+				D86FB2842F0D9C6B00269EFD /* YelpService.swift */,
+				D86FB2862F0D9C7100269EFD /* Config.swift */,
+				D86FB2882F0D9CD700269EFD /* YELP_SETUP_GUIDE.md */,
+				D86FB28A2F0DA19B00269EFD /* CANVAS_PREVIEW_GUIDE.md */,
+				D8C4D0102F0DA3AD00CFA428 /* ContentView.swift */,
 			);
 			path = Tendr;
 			sourceTree = "<group>";
@@ -200,7 +250,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 2610;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					D8A2139D2583CBD000347F9F = {
 						CreatedOnToolsVersion = 12.2;
@@ -240,8 +290,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D86FB2832F0D6F4F00269EFD /* FIXES_APPLIED.md in Resources */,
+				D86FB28B2F0DA19B00269EFD /* CANVAS_PREVIEW_GUIDE.md in Resources */,
 				D852C2EF2F0B2AA10089AC29 /* V1_ENHANCEMENTS.md in Resources */,
 				D8A213A92583CBD100347F9F /* Preview Assets.xcassets in Resources */,
+				D86FB2892F0D9CD700269EFD /* YELP_SETUP_GUIDE.md in Resources */,
 				D8B6CA352F0B275500A59D67 /* IMPLEMENTATION_NOTES.md in Resources */,
 				D8A213A62583CBD100347F9F /* Assets.xcassets in Resources */,
 			);
@@ -268,8 +321,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8A213A42583CBD000347F9F /* ContentView.swift in Sources */,
+				D86FB26D2F0D6E9500269EFD /* AppState.swift in Sources */,
+				D86FB2772F0D6EBF00269EFD /* TenderDeckViewModel.swift in Sources */,
+				D86FB26F2F0D6E9B00269EFD /* Tender.swift in Sources */,
+				D86FB2872F0D9C7100269EFD /* Config.swift in Sources */,
+				D86FB2732F0D6EA900269EFD /* LocationManager.swift in Sources */,
+				D86FB27B2F0D6EDB00269EFD /* SwipeDeckView.swift in Sources */,
+				D86FB2852F0D9C6B00269EFD /* YelpService.swift in Sources */,
+				D86FB2712F0D6EA300269EFD /* FavoriteRestaurant.swift in Sources */,
+				D86FB2812F0D6F0D00269EFD /* ChatDetailView.swift in Sources */,
+				D86FB2792F0D6ECC00269EFD /* RootView.swift in Sources */,
+				D86FB2752F0D6EB800269EFD /* RestaurantSearchService.swift in Sources */,
+				D8C4D0112F0DA3AD00CFA428 /* ContentView.swift in Sources */,
+				D86FB27F2F0D6EF600269EFD /* SavedListView.swift in Sources */,
 				D8A213A22583CBD000347F9F /* TendrApp.swift in Sources */,
+				D86FB27D2F0D6EE800269EFD /* TenderCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +375,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -372,6 +439,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -432,6 +500,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Tendr/Preview Content\"";
+				DEVELOPMENT_TEAM = X28ZS48FD3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Tendr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
@@ -453,6 +522,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Tendr/Preview Content\"";
+				DEVELOPMENT_TEAM = X28ZS48FD3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Tendr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;

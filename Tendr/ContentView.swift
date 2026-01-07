@@ -20,6 +20,6 @@ struct ContentView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: FavoriteRestaurant.self, configurations: config)
     
-    return ContentView()
+    ContentView()
         .modelContainer(container)
 }

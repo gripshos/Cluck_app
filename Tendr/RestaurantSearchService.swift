@@ -2,7 +2,7 @@
 //  RestaurantSearchService.swift
 //  Tendr
 //
-//  Uses MapKit to search for nearby restaurants
+//  Uses MapKit and Yelp to search for nearby restaurants
 //
 
 import Foundation
@@ -12,7 +12,80 @@ import CoreLocation
 @MainActor
 class RestaurantSearchService {
     
+    private let yelpService: YelpService
+    
+    init(yelpService: YelpService) {
+        self.yelpService = yelpService
+    }
+    
     func searchNearbyRestaurants(near location: CLLocation) async throws -> [Tender] {
+        // First, try to get data directly from Yelp
+        do {
+            let yelpBusinesses = try await yelpService.searchBusinesses(
+                near: location,
+                term: "chicken tenders",
+                radius: Config.searchRadius,
+                limit: Config.maxResults
+            )
+            
+            // Convert Yelp businesses to Tender objects
+            let tenders = yelpBusinesses.compactMap { business -> Tender? in
+                createTender(from: business)
+            }
+            
+            if !tenders.isEmpty {
+                return tenders
+            }
+        } catch {
+            print("⚠️ Yelp search failed: \(error.localizedDescription)")
+            // Fall through to MapKit backup
+        }
+        
+        // Fallback to MapKit if Yelp fails or returns no results
+        return try await searchWithMapKit(near: location)
+    }
+    
+    // MARK: - Yelp Integration
+    
+    private func createTender(from yelpBusiness: YelpBusiness) -> Tender? {
+        // Determine restaurant type from categories
+        let restaurantType = yelpBusiness.categories?.first?.title ?? "Restaurant"
+        
+        // Use Yelp's price range or default
+        let priceRange = yelpBusiness.price ?? "$$"
+        
+        // Format address from Yelp location
+        let address = yelpBusiness.location.displayAddress?.joined(separator: ", ")
+        
+        // Parse image URL
+        let imageURL: URL? = {
+            guard let imageUrlString = yelpBusiness.imageUrl else { return nil }
+            return URL(string: imageUrlString)
+        }()
+        
+        // Parse website URL
+        let websiteURL: URL? = {
+            guard let urlString = yelpBusiness.url else { return nil }
+            return URL(string: urlString)
+        }()
+        
+        return Tender(
+            name: yelpBusiness.name,
+            restaurantType: restaurantType,
+            priceRange: priceRange,
+            address: address,
+            phoneNumber: yelpBusiness.displayPhone,
+            websiteURL: websiteURL,
+            imageName: nil,
+            imageURL: imageURL,
+            latitude: yelpBusiness.coordinates.latitude,
+            longitude: yelpBusiness.coordinates.longitude
+        )
+    }
+    
+    // MARK: - MapKit Fallback
+    
+    private func searchWithMapKit(near location: CLLocation) async throws -> [Tender] {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = "chicken tenders"
         
