@@ -13,6 +13,7 @@ struct SavedListView: View {
     @Query(sort: \FavoriteRestaurant.savedDate, order: .reverse) private var favorites: [FavoriteRestaurant]
     
     @State private var selectedTender: Tender?
+    @State private var editMode: EditMode = .inactive
     
     var body: some View {
         NavigationStack {
@@ -29,49 +30,34 @@ struct SavedListView: View {
                 )
                 .ignoresSafeArea()
                 
-                if favorites.isEmpty {
-                    ContentUnavailableView(
-                        "No Saved Restaurants",
-                        systemImage: "heart.slash",
-                        description: Text("Swipe right on restaurants to save them here")
-                    )
-                    .foregroundStyle(.white)
-                } else {
-                    List {
-                        ForEach(favorites) { favorite in
-                            SavedRestaurantRow(favorite: favorite)
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    selectedTender = favorite.asTender
-                                }
-                                .listRowBackground(Color.white.opacity(0.9))
+                VStack(spacing: 0) {
+                    // Custom Header with Edit Button
+                    SavedHeader(showEdit: !favorites.isEmpty, editMode: $editMode)
+                    
+                    // Main Content
+                    if favorites.isEmpty {
+                        Spacer()
+                        ContentUnavailableView(
+                            "No Saved Restaurants",
+                            systemImage: "heart.slash",
+                            description: Text("Swipe right on restaurants to save them here")
+                        )
+                        .foregroundStyle(.white)
+                        Spacer()
+                    } else {
+                        List {
+                            ForEach(favorites) { favorite in
+                                SavedRestaurantRow(favorite: favorite)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        selectedTender = favorite.asTender
+                                    }
+                                    .listRowBackground(Color.white.opacity(0.9))
+                            }
+                            .onDelete(perform: deleteRestaurants)
                         }
-                        .onDelete(perform: deleteRestaurants)
-                    }
-                    .scrollContentBackground(.hidden)
-                }
-            }
-            .navigationTitle("💕 Saved")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarBackground(
-                LinearGradient(
-                    colors: [
-                        Color(red: 1.0, green: 0.2, blue: 0.4),
-                        Color(red: 1.0, green: 0.3, blue: 0.45)
-                    ],
-                    startPoint: .leading,
-                    endPoint: .trailing
-                ),
-                for: .navigationBar
-            )
-            .toolbarColorScheme(.dark, for: .navigationBar)
-            .toolbar {
-                if !favorites.isEmpty {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        EditButton()
-                            .foregroundStyle(.white)
-                            .fontWeight(.semibold)
+                        .scrollContentBackground(.hidden)
+                        .environment(\.editMode, $editMode)
                     }
                 }
             }
@@ -86,6 +72,77 @@ struct SavedListView: View {
             modelContext.delete(favorites[index])
         }
         try? modelContext.save()
+    }
+}
+
+// MARK: - Custom Header Component
+
+struct SavedHeader: View {
+    let showEdit: Bool
+    @Binding var editMode: EditMode
+    
+    var body: some View {
+        ZStack {
+            // Vibrant gradient background matching the Saved tab theme
+            LinearGradient(
+                colors: [
+                    Color(red: 1.0, green: 0.2, blue: 0.4),
+                    Color(red: 1.0, green: 0.3, blue: 0.45)
+                ],
+                startPoint: .leading,
+                endPoint: .trailing
+            )
+            
+            HStack(spacing: 12) {
+                // Heart icon
+                Image(systemName: "heart.fill")
+                    .font(.system(size: 28))
+                    .foregroundStyle(.white)
+                    .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+                
+                // Styled tab title
+                Text("Saved")
+                    .font(.system(size: 34, weight: .bold, design: .rounded))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [.white, .white.opacity(0.9)],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
+                
+                Spacer()
+                
+                // Edit button (only show when there are favorites)
+                if showEdit {
+                    Button(action: {
+                        withAnimation {
+                            if editMode == .active {
+                                editMode = .inactive
+                            } else {
+                                editMode = .active
+                            }
+                        }
+                    }) {
+                        Text(editMode == .active ? "Done" : "Edit")
+                            .font(.body)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.white)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 8)
+                            .background(
+                                Capsule()
+                                    .fill(.white.opacity(0.2))
+                            )
+                    }
+                    .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+                }
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 12)
+        }
+        .frame(height: 70)
     }
 }
 

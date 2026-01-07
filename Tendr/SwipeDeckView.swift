@@ -176,12 +176,9 @@ struct CluckHeader: View {
             )
             
             HStack(spacing: 12) {
-                // App logo
-                Image("tenderIcon")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                // Chicken emoji icon
+                Text("🍗")
+                    .font(.system(size: 40))
                     .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
                 
                 // Styled app title
