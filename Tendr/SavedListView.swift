@@ -124,25 +124,25 @@ struct SavedRestaurantRow: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(favorite.name)
                     .font(.headline)
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(.black)
                 
                 HStack {
                     Text(favorite.restaurantType)
                         .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.black.opacity(0.7))
                     
                     Text("•")
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.black.opacity(0.7))
                     
                     Text(favorite.priceRange)
                         .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.black.opacity(0.7))
                 }
                 
                 if let address = favorite.address {
                     Text(address)
                         .font(.caption)
-                        .foregroundStyle(.tertiary)
+                        .foregroundStyle(.black.opacity(0.5))
                         .lineLimit(1)
                 }
             }

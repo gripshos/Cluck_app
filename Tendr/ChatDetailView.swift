@@ -50,17 +50,18 @@ struct ChatDetailView: View {
                             endPoint: .bottom
                         )
                         
-                        // Restaurant name
-                        Text(tender.name)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .padding()
+                        // Removed restaurant name from here - now in navigation bar
                     }
                     .frame(height: 300)
                     .clipped()
                     
                     VStack(alignment: .leading, spacing: 16) {
+                        // Restaurant name prominently displayed
+                        Text(tender.name)
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.primary)
+                        
                         // Type and price
                         HStack {
                             Label(tender.restaurantType, systemImage: "fork.knife")
@@ -82,27 +83,6 @@ struct ChatDetailView: View {
                                 Text(address)
                                     .foregroundStyle(.secondary)
                             }
-                        }
-                        
-                        // Phone number
-                        if let phoneNumber = tender.phoneNumber {
-                            Button {
-                                if let url = URL(string: "tel:\(phoneNumber)") {
-                                    UIApplication.shared.open(url)
-                                }
-                            } label: {
-                                HStack {
-                                    Label(phoneNumber, systemImage: "phone.fill")
-                                        .font(.headline)
-                                    Spacer()
-                                    Image(systemName: "chevron.right")
-                                        .foregroundStyle(.secondary)
-                                }
-                                .padding()
-                                .background(Color(.systemGray6))
-                                .cornerRadius(10)
-                            }
-                            .foregroundStyle(.primary)
                         }
                         
                         // Website
@@ -196,10 +176,34 @@ struct ChatDetailView: View {
                                 .fontWeight(.semibold)
                             }
                         }
+                        
+                        // Phone number (moved to bottom)
+                        if let phoneNumber = tender.phoneNumber {
+                            Divider()
+                            
+                            Button {
+                                if let url = URL(string: "tel:\(phoneNumber)") {
+                                    UIApplication.shared.open(url)
+                                }
+                            } label: {
+                                HStack {
+                                    Label(phoneNumber, systemImage: "phone.fill")
+                                        .font(.headline)
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                        .foregroundStyle(.secondary)
+                                }
+                                .padding()
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                            }
+                            .foregroundStyle(.primary)
+                        }
                     }
                     .padding()
                 }
             }
+            .navigationTitle(tender.name)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
