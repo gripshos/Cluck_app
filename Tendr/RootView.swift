@@ -1,6 +1,6 @@
 //
 //  RootView.swift
-//  Tendr
+//  Cluck
 //
 //  Main navigation and tab view
 //

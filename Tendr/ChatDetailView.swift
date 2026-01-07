@@ -1,6 +1,6 @@
 //
 //  ChatDetailView.swift
-//  Tendr
+//  Cluck
 //
 //  Detail view for a restaurant
 //

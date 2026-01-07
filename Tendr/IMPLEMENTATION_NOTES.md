@@ -1,7 +1,7 @@
-# Tendr App - Real Restaurant Data Implementation
+# Cluck App - Real Restaurant Data Implementation
 
 ## Overview
-Your Tendr app now uses **Apple's MapKit Local Search API** to fetch real restaurant data near the user's location. This is completely **FREE** with no API keys required!
+Your Cluck app now uses **Apple's MapKit Local Search API** to fetch real restaurant data near the user's location. This is completely **FREE** with no API keys required!
 
 ## What Changed
 

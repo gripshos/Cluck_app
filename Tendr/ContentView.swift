@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Tendr
+//  Cluck
 //
 //  Main content view for the app
 //

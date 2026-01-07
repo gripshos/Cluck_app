@@ -1,6 +1,6 @@
 //
 //  AppState.swift
-//  Tendr
+//  Cluck
 //
 //  Central app state managing all dependencies
 //

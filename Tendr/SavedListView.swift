@@ -1,6 +1,6 @@
 //
 //  SavedListView.swift
-//  Tendr
+//  Cluck
 //
 //  List of saved favorite restaurants
 //

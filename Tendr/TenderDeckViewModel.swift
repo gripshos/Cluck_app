@@ -1,6 +1,6 @@
 //
 //  TenderDeckViewModel.swift
-//  Tendr
+//  Cluck
 //
 //  Manages the state of the tender deck
 //

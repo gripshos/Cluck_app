@@ -1,6 +1,6 @@
 //
-//  TendrApp.swift
-//  Tendr
+//  CluckApp.swift
+//  Cluck
 //
 //  App entry point with SwiftData configuration
 //
@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct TendrApp: App {
+struct CluckApp: App {
     
     var body: some Scene {
         WindowGroup {

@@ -1,4 +1,4 @@
-# Tendr V1 - Enhanced Restaurant Cards with Real Data
+# Cluck V1 - Enhanced Restaurant Cards with Real Data
 
 ## ✅ What's Been Implemented
 
@@ -268,7 +268,7 @@ Make sure you have:
 
 <!-- Optional but recommended -->
 <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-<string>Allow Tendr to find restaurants near you</string>
+<string>Allow Cluck to find restaurants near you</string>
 ```
 
 ---
@@ -402,7 +402,7 @@ You now have:
 
 ## 🎉 Congratulations!
 
-Your Tendr app V1 is production-ready with:
+Your Cluck app V1 is production-ready with:
 - Real restaurant data
 - Professional UI/UX
 - Smart fallbacks

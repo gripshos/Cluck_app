@@ -1,6 +1,6 @@
 //
 //  TenderCardView.swift
-//  Tendr
+//  Cluck
 //
 //  Individual swipeable card for a restaurant
 //

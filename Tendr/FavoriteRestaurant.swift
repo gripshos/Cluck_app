@@ -1,6 +1,6 @@
 //
 //  FavoriteRestaurant.swift
-//  Tendr
+//  Cluck
 //
 //  SwiftData model for saved favorites
 //

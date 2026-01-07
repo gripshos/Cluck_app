@@ -1,6 +1,6 @@
 //
 //  SwipeDeckView.swift
-//  Tendr
+//  Cluck
 //
 //  Main swipeable card deck interface
 //
@@ -34,7 +34,7 @@ struct SwipeDeckView: View {
                 
                 VStack(spacing: 0) {
                     // Custom Header with Logo and Title
-                    TendrHeader(onRefresh: {
+                    CluckHeader(onRefresh: {
                         Task {
                             await viewModel.loadRestaurants()
                         }
@@ -160,7 +160,7 @@ struct SwipeDeckView: View {
 
 // MARK: - Custom Header Component
 
-struct TendrHeader: View {
+struct CluckHeader: View {
     let onRefresh: () -> Void
     
     var body: some View {
@@ -185,7 +185,7 @@ struct TendrHeader: View {
                     .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
                 
                 // Styled app title
-                Text("Tendr")
+                Text("Cluck")
                     .font(.system(size: 34, weight: .bold, design: .rounded))
                     .foregroundStyle(
                         LinearGradient(
