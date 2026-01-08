@@ -65,13 +65,11 @@ Cluck/
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
+This project is licensed under the MIT License
 ## Acknowledgments
 
 - Built with SwiftUI and Apple's native frameworks
-- Inspired by the universal love of chicken tenders 🍗
 
 ---
 
-**Made with ❤️ by Steven Gripshover**
+**Made by Steven Gripshover**
