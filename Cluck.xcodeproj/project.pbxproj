@@ -265,7 +265,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Tendr" */;
+			buildConfigurationList = D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Cluck" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -499,10 +499,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Tendr/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Cluck/Preview Content\"";
 				DEVELOPMENT_TEAM = X28ZS48FD3;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Tendr/Info.plist;
+				INFOPLIST_FILE = Cluck/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Cluck;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
@@ -524,10 +524,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Tendr/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Cluck/Preview Content\"";
 				DEVELOPMENT_TEAM = X28ZS48FD3;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Tendr/Info.plist;
+				INFOPLIST_FILE = Cluck/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Cluck;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
@@ -622,7 +622,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Tendr" */ = {
+		D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Cluck" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D8A213C12583CBD100347F9F /* Debug */,
