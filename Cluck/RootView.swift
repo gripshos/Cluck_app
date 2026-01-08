@@ -18,23 +18,28 @@ struct RootView: View {
     init(appState: AppState) {
         self.appState = appState
         
-        // Customize tab bar appearance
+        // Modern, subtle tab bar appearance with blur material
         let appearance = UITabBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(red: 1.0, green: 0.95, blue: 0.9, alpha: 1.0)
+        appearance.configureWithDefaultBackground()
         
-        // Selected tab item color
-        appearance.stackedLayoutAppearance.selected.iconColor = UIColor(red: 1.0, green: 0.3, blue: 0.2, alpha: 1.0)
+        // Subtle background with blur
+        appearance.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
+        
+        // Selected tab item color (vibrant orange)
+        appearance.stackedLayoutAppearance.selected.iconColor = UIColor(red: 1.0, green: 0.4, blue: 0.2, alpha: 1.0)
         appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
-            .foregroundColor: UIColor(red: 1.0, green: 0.3, blue: 0.2, alpha: 1.0)
+            .foregroundColor: UIColor(red: 1.0, green: 0.4, blue: 0.2, alpha: 1.0),
+            .font: UIFont.systemFont(ofSize: 10, weight: .semibold)
         ]
         
-        // Normal tab item color
-        appearance.stackedLayoutAppearance.normal.iconColor = UIColor.systemGray
+        // Normal tab item color (subtle gray)
+        appearance.stackedLayoutAppearance.normal.iconColor = UIColor.secondaryLabel
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGray
+            .foregroundColor: UIColor.secondaryLabel,
+            .font: UIFont.systemFont(ofSize: 10, weight: .medium)
         ]
         
+        // Apply to all tab bar states
         UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }

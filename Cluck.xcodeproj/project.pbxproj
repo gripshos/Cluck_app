@@ -28,6 +28,14 @@
 		D8A213A62583CBD100347F9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A213A52583CBD100347F9F /* Assets.xcassets */; };
 		D8A213B42583CBD100347F9F /* CluckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213B32583CBD100347F9F /* CluckTests.swift */; };
 		D8A213BF2583CBD100347F9F /* ClluckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213BE2583CBD100347F9F /* ClluckUITests.swift */; };
+		D8B365C32F100B92005178DA /* cluck.icon in Resources */ = {isa = PBXBuildFile; fileRef = D8B365C22F100B92005178DA /* cluck.icon */; };
+		D8B365D42F1033D7005178DA /* TEST_COVERAGE_SUMMARY.md in Resources */ = {isa = PBXBuildFile; fileRef = D8B365D32F1033D7005178DA /* TEST_COVERAGE_SUMMARY.md */; };
+		D8B365D82F10344D005178DA /* 100_PERCENT_COVERAGE_REPORT.md in Resources */ = {isa = PBXBuildFile; fileRef = D8B365D72F10344D005178DA /* 100_PERCENT_COVERAGE_REPORT.md */; };
+		D8B365DA2F103469005178DA /* QUICK_TEST_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = D8B365D92F103469005178DA /* QUICK_TEST_GUIDE.md */; };
+		D8B365DC2F103551005178DA /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B365DB2F103551005178DA /* EmptyStateView.swift */; };
+		D8B365DE2F1035DB005178DA /* FINAL_ENHANCEMENTS_SUMMARY.md in Resources */ = {isa = PBXBuildFile; fileRef = D8B365DD2F1035DB005178DA /* FINAL_ENHANCEMENTS_SUMMARY.md */; };
+		D8B365E02F103612005178DA /* VISUAL_FEATURE_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = D8B365DF2F103612005178DA /* VISUAL_FEATURE_GUIDE.md */; };
+		D8B365E22F10363C005178DA /* QUICK_START_NEW_FEATURES.md in Resources */ = {isa = PBXBuildFile; fileRef = D8B365E12F10363C005178DA /* QUICK_START_NEW_FEATURES.md */; };
 		D8B6CA352F0B275500A59D67 /* IMPLEMENTATION_NOTES.md in Resources */ = {isa = PBXBuildFile; fileRef = D8B6CA342F0B275500A59D67 /* IMPLEMENTATION_NOTES.md */; };
 		D8C4D0112F0DA3AD00CFA428 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C4D0102F0DA3AD00CFA428 /* ContentView.swift */; };
 		D8EF009B2F0F444B007E7B4B /* UI_IMPROVEMENTS_COMPLETED.md in Resources */ = {isa = PBXBuildFile; fileRef = D8EF009A2F0F444B007E7B4B /* UI_IMPROVEMENTS_COMPLETED.md */; };
@@ -84,6 +92,29 @@
 		D8A213BA2583CBD100347F9F /* CluckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CluckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A213BE2583CBD100347F9F /* ClluckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClluckUITests.swift; sourceTree = "<group>"; };
 		D8A213C02583CBD100347F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8B365C22F100B92005178DA /* cluck.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = cluck.icon; sourceTree = "<group>"; };
+		D8B365C42F102DD2005178DA /* TenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenderTests.swift; sourceTree = "<group>"; };
+		D8B365C52F102DFC005178DA /* TenderDeckViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenderDeckViewModelTests.swift; sourceTree = "<group>"; };
+		D8B365C62F102E09005178DA /* ConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigTests.swift; sourceTree = "<group>"; };
+		D8B365C72F102E55005178DA /* RestaurantSearchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSearchServiceTests.swift; sourceTree = "<group>"; };
+		D8B365C82F102E66005178DA /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		D8B365C92F102E89005178DA /* TenderCardViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenderCardViewTests.swift; sourceTree = "<group>"; };
+		D8B365CA2F102EB2005178DA /* DataValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidationTests.swift; sourceTree = "<group>"; };
+		D8B365CB2F102EED005178DA /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		D8B365CC2F1032A5005178DA /* TenderTests 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TenderTests 2.swift"; sourceTree = "<group>"; };
+		D8B365CD2F1032E2005178DA /* TenderDeckViewModelTests 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TenderDeckViewModelTests 2.swift"; sourceTree = "<group>"; };
+		D8B365CE2F1032FA005178DA /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
+		D8B365CF2F103331005178DA /* FavoriteRestaurantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRestaurantTests.swift; sourceTree = "<group>"; };
+		D8B365D02F103361005178DA /* RestaurantSearchServiceTests 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestaurantSearchServiceTests 2.swift"; sourceTree = "<group>"; };
+		D8B365D12F103372005178DA /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
+		D8B365D22F1033A4005178DA /* ViewIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewIntegrationTests.swift; sourceTree = "<group>"; };
+		D8B365D32F1033D7005178DA /* TEST_COVERAGE_SUMMARY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TEST_COVERAGE_SUMMARY.md; sourceTree = "<group>"; };
+		D8B365D72F10344D005178DA /* 100_PERCENT_COVERAGE_REPORT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = 100_PERCENT_COVERAGE_REPORT.md; sourceTree = "<group>"; };
+		D8B365D92F103469005178DA /* QUICK_TEST_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = QUICK_TEST_GUIDE.md; sourceTree = "<group>"; };
+		D8B365DB2F103551005178DA /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		D8B365DD2F1035DB005178DA /* FINAL_ENHANCEMENTS_SUMMARY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = FINAL_ENHANCEMENTS_SUMMARY.md; sourceTree = "<group>"; };
+		D8B365DF2F103612005178DA /* VISUAL_FEATURE_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = VISUAL_FEATURE_GUIDE.md; sourceTree = "<group>"; };
+		D8B365E12F10363C005178DA /* QUICK_START_NEW_FEATURES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = QUICK_START_NEW_FEATURES.md; sourceTree = "<group>"; };
 		D8B6CA342F0B275500A59D67 /* IMPLEMENTATION_NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = IMPLEMENTATION_NOTES.md; sourceTree = "<group>"; };
 		D8C4D0102F0DA3AD00CFA428 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D8EF009A2F0F444B007E7B4B /* UI_IMPROVEMENTS_COMPLETED.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = UI_IMPROVEMENTS_COMPLETED.md; sourceTree = "<group>"; };
@@ -126,6 +157,21 @@
 				D8A213B22583CBD100347F9F /* CluckTests */,
 				D8A213BD2583CBD100347F9F /* CluckUITests */,
 				D8A2139F2583CBD000347F9F /* Products */,
+				D8B365C42F102DD2005178DA /* TenderTests.swift */,
+				D8B365C52F102DFC005178DA /* TenderDeckViewModelTests.swift */,
+				D8B365C62F102E09005178DA /* ConfigTests.swift */,
+				D8B365C72F102E55005178DA /* RestaurantSearchServiceTests.swift */,
+				D8B365C82F102E66005178DA /* TestHelpers.swift */,
+				D8B365C92F102E89005178DA /* TenderCardViewTests.swift */,
+				D8B365CA2F102EB2005178DA /* DataValidationTests.swift */,
+				D8B365CB2F102EED005178DA /* IntegrationTests.swift */,
+				D8B365CC2F1032A5005178DA /* TenderTests 2.swift */,
+				D8B365CD2F1032E2005178DA /* TenderDeckViewModelTests 2.swift */,
+				D8B365CE2F1032FA005178DA /* LocationManagerTests.swift */,
+				D8B365CF2F103331005178DA /* FavoriteRestaurantTests.swift */,
+				D8B365D02F103361005178DA /* RestaurantSearchServiceTests 2.swift */,
+				D8B365D12F103372005178DA /* AppStateTests.swift */,
+				D8B365D22F1033A4005178DA /* ViewIntegrationTests.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +191,7 @@
 				D8A213A12583CBD000347F9F /* CluckApp.swift */,
 				D8A213A32583CBD000347F9F /* ContentView.swift */,
 				D8A213A52583CBD100347F9F /* Assets.xcassets */,
+				D8B365C22F100B92005178DA /* cluck.icon */,
 				D8A213AA2583CBD100347F9F /* Info.plist */,
 				D8B6CA342F0B275500A59D67 /* IMPLEMENTATION_NOTES.md */,
 				D852C2EE2F0B2AA10089AC29 /* V1_ENHANCEMENTS.md */,
@@ -171,6 +218,13 @@
 				D8EF00A02F0F44CE007E7B4B /* SWIFTDATA_MIGRATION_GUIDE.md */,
 				D8EF00A22F0F44FA007E7B4B /* README_UI_IMPROVEMENTS.md */,
 				D8EF00A42F0F451A007E7B4B /* QUICK_START.md */,
+				D8B365D32F1033D7005178DA /* TEST_COVERAGE_SUMMARY.md */,
+				D8B365D72F10344D005178DA /* 100_PERCENT_COVERAGE_REPORT.md */,
+				D8B365D92F103469005178DA /* QUICK_TEST_GUIDE.md */,
+				D8B365DB2F103551005178DA /* EmptyStateView.swift */,
+				D8B365DD2F1035DB005178DA /* FINAL_ENHANCEMENTS_SUMMARY.md */,
+				D8B365DF2F103612005178DA /* VISUAL_FEATURE_GUIDE.md */,
+				D8B365E12F10363C005178DA /* QUICK_START_NEW_FEATURES.md */,
 			);
 			path = Cluck;
 			sourceTree = "<group>";
@@ -302,13 +356,20 @@
 				D86FB28B2F0DA19B00269EFD /* CANVAS_PREVIEW_GUIDE.md in Resources */,
 				D852C2EF2F0B2AA10089AC29 /* V1_ENHANCEMENTS.md in Resources */,
 				D8EF009B2F0F444B007E7B4B /* UI_IMPROVEMENTS_COMPLETED.md in Resources */,
+				D8B365E22F10363C005178DA /* QUICK_START_NEW_FEATURES.md in Resources */,
 				D8EF009F2F0F44A2007E7B4B /* TESTING_CHECKLIST.md in Resources */,
 				D8EF00A12F0F44CE007E7B4B /* SWIFTDATA_MIGRATION_GUIDE.md in Resources */,
+				D8B365DE2F1035DB005178DA /* FINAL_ENHANCEMENTS_SUMMARY.md in Resources */,
 				D86FB2892F0D9CD700269EFD /* YELP_SETUP_GUIDE.md in Resources */,
 				D8B6CA352F0B275500A59D67 /* IMPLEMENTATION_NOTES.md in Resources */,
 				D8A213A62583CBD100347F9F /* Assets.xcassets in Resources */,
 				D8EF00A32F0F44FA007E7B4B /* README_UI_IMPROVEMENTS.md in Resources */,
+				D8B365DA2F103469005178DA /* QUICK_TEST_GUIDE.md in Resources */,
+				D8B365C32F100B92005178DA /* cluck.icon in Resources */,
+				D8B365E02F103612005178DA /* VISUAL_FEATURE_GUIDE.md in Resources */,
+				D8B365D82F10344D005178DA /* 100_PERCENT_COVERAGE_REPORT.md in Resources */,
 				D8EF00A52F0F451A007E7B4B /* QUICK_START.md in Resources */,
+				D8B365D42F1033D7005178DA /* TEST_COVERAGE_SUMMARY.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +398,7 @@
 				D86FB2772F0D6EBF00269EFD /* TenderDeckViewModel.swift in Sources */,
 				D86FB26F2F0D6E9B00269EFD /* Tender.swift in Sources */,
 				D86FB2872F0D9C7100269EFD /* Config.swift in Sources */,
+				D8B365DC2F103551005178DA /* EmptyStateView.swift in Sources */,
 				D86FB2732F0D6EA900269EFD /* LocationManager.swift in Sources */,
 				D86FB27B2F0D6EDB00269EFD /* SwipeDeckView.swift in Sources */,
 				D86FB2852F0D9C6B00269EFD /* YelpService.swift in Sources */,
@@ -508,8 +570,9 @@
 		D8A213C42583CBD100347F9F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = cluck;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Cluck/Preview Content\"";
 				DEVELOPMENT_TEAM = X28ZS48FD3;
@@ -533,8 +596,9 @@
 		D8A213C52583CBD100347F9F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = cluck;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Cluck/Preview Content\"";
 				DEVELOPMENT_TEAM = X28ZS48FD3;

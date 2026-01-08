@@ -44,28 +44,23 @@ struct SwipeDeckView: View {
                     ZStack {
                     
                     if viewModel.isLoading {
-                        VStack(spacing: 20) {
-                            ProgressView()
-                                .scaleEffect(1.5)
-                                .tint(.white)
-                            Text("Finding restaurants...")
-                                .font(.headline)
-                                .foregroundStyle(.white)
-                        }
+                        EmptyStateView.searching
                     } else if let errorMessage = viewModel.errorMessage {
-                        ContentUnavailableView(
-                            "Unable to Find Restaurants",
-                            systemImage: "fork.knife.circle",
-                            description: Text(errorMessage)
-                        )
-                        .foregroundStyle(.white)
+                        if errorMessage.contains("location") {
+                            EmptyStateView.locationDenied
+                        } else {
+                            EmptyStateView.networkError(onRetry: {
+                                Task {
+                                    await viewModel.loadRestaurants()
+                                }
+                            })
+                        }
                     } else if viewModel.tenders.isEmpty {
-                        ContentUnavailableView(
-                            "No Restaurants Found",
-                            systemImage: "fork.knife.circle",
-                            description: Text("Try adjusting your location or search radius")
-                        )
-                        .foregroundStyle(.white)
+                        EmptyStateView.noRestaurantsFound(onRetry: {
+                            Task {
+                                await viewModel.loadRestaurants()
+                            }
+                        })
                     } else {
                         VStack {
                             // Undo button (only visible when there's a last swiped restaurant)
@@ -107,20 +102,27 @@ struct SwipeDeckView: View {
                             ZStack {
                                 // Render up to 3 cards with stacking effect
                                 ForEach(Array(viewModel.tenders.prefix(3).enumerated().reversed()), id: \.element.id) { index, tender in
-                                    TenderCardView(tender: tender, userLocation: viewModel.userLocation)
-                                        .frame(
-                                            width: geometry.size.width - 40,
-                                            height: min(geometry.size.height * 0.7, 600)
-                                        )
-                                        .scaleEffect(1.0 - (Double(index) * 0.05))
-                                        .offset(y: CGFloat(index) * 8)
-                                        .position(
-                                            x: geometry.size.width / 2 + (index == 0 ? dragAmount.width : 0),
-                                            y: geometry.size.height / 2 + (index == 0 ? dragAmount.height * 0.4 : 0)
-                                        )
-                                        .rotationEffect(.degrees(index == 0 ? Double(dragAmount.width / 20) : 0))
-                                        .zIndex(Double(3 - index))
-                                        .allowsHitTesting(index == 0)
+                                    ZStack {
+                                        TenderCardView(tender: tender, userLocation: viewModel.userLocation)
+                                        
+                                        // Like/Nope overlay (only on top card)
+                                        if index == 0 {
+                                            SwipeOverlayView(dragAmount: dragAmount)
+                                        }
+                                    }
+                                    .frame(
+                                        width: geometry.size.width - 40,
+                                        height: min(geometry.size.height * 0.7, 600)
+                                    )
+                                    .scaleEffect(1.0 - (Double(index) * 0.05))
+                                    .offset(y: CGFloat(index) * 8)
+                                    .position(
+                                        x: geometry.size.width / 2 + (index == 0 ? dragAmount.width : 0),
+                                        y: geometry.size.height / 2 + (index == 0 ? dragAmount.height * 0.4 : 0)
+                                    )
+                                    .rotationEffect(.degrees(index == 0 ? Double(dragAmount.width / 20) : 0))
+                                    .zIndex(Double(3 - index))
+                                    .allowsHitTesting(index == 0)
                                         .gesture(
                                             index == 0 ? DragGesture()
                                                 .onChanged { gesture in
@@ -272,6 +274,82 @@ struct CluckHeader: View {
             .padding(.vertical, 12)
         }
         .frame(height: 70)
+    }
+}
+
+// MARK: - Swipe Overlay Component
+
+struct SwipeOverlayView: View {
+    let dragAmount: CGSize
+    
+    private var likeOpacity: Double {
+        guard dragAmount.width > 0 else { return 0 }
+        return min(Double(dragAmount.width / 100), 1.0)
+    }
+    
+    private var nopeOpacity: Double {
+        guard dragAmount.width < 0 else { return 0 }
+        return min(Double(abs(dragAmount.width) / 100), 1.0)
+    }
+    
+    private var likeScale: CGFloat {
+        0.5 + (likeOpacity * 0.5) // Scale from 0.5 to 1.0
+    }
+    
+    private var nopeScale: CGFloat {
+        0.5 + (nopeOpacity * 0.5) // Scale from 0.5 to 1.0
+    }
+    
+    var body: some View {
+        ZStack {
+            // LIKE overlay (right swipe)
+            VStack {
+                HStack {
+                    Text("LIKE")
+                        .font(.system(size: 48, weight: .black, design: .rounded))
+                        .foregroundStyle(.green)
+                        .overlay(
+                            Text("LIKE")
+                                .font(.system(size: 48, weight: .black, design: .rounded))
+                                .foregroundStyle(.white)
+                                .opacity(0.5)
+                                .blur(radius: 4)
+                        )
+                        .rotationEffect(.degrees(-15))
+                        .scaleEffect(likeScale)
+                        .opacity(likeOpacity)
+                        .animation(.spring(response: 0.3, dampingFraction: 0.6), value: likeOpacity)
+                        .padding(.leading, 40)
+                        .padding(.top, 40)
+                    Spacer()
+                }
+                Spacer()
+            }
+            
+            // NOPE overlay (left swipe)
+            VStack {
+                HStack {
+                    Spacer()
+                    Text("NOPE")
+                        .font(.system(size: 48, weight: .black, design: .rounded))
+                        .foregroundStyle(.red)
+                        .overlay(
+                            Text("NOPE")
+                                .font(.system(size: 48, weight: .black, design: .rounded))
+                                .foregroundStyle(.white)
+                                .opacity(0.5)
+                                .blur(radius: 4)
+                        )
+                        .rotationEffect(.degrees(15))
+                        .scaleEffect(nopeScale)
+                        .opacity(nopeOpacity)
+                        .animation(.spring(response: 0.3, dampingFraction: 0.6), value: nopeOpacity)
+                        .padding(.trailing, 40)
+                        .padding(.top, 40)
+                }
+                Spacer()
+            }
+        }
     }
 }
 

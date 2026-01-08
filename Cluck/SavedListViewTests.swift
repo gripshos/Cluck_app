@@ -5,27 +5,24 @@
 //  Tests for SavedListView and related components
 //
 
-import Testing
+import XCTest
 import SwiftUI
 import SwiftData
 @testable import Cluck
 
-@Suite("SavedListView Tests")
 @MainActor
-struct SavedListViewTests {
+class SavedListViewTests: XCTestCase {
     
     // MARK: - SavedListView Tests
     
-    @Test("SavedListView can be created")
     func testSavedListViewCreation() async throws {
         // When
         let view = SavedListView()
         
         // Then - Should initialize without crashing
-        #expect(view != nil)
+        XCTAssertNotNil(view)
     }
     
-    @Test("SavedListView with empty favorites")
     func testEmptyFavoritesList() async throws {
         // Given
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
@@ -36,10 +33,9 @@ struct SavedListViewTests {
             .modelContainer(container)
         
         // Then - Should show empty state
-        #expect(view != nil)
+        XCTAssertNotNil(view)
     }
     
-    @Test("SavedListView with favorites")
     func testFavoritesListWithData() async throws {
         // Given
         let config = ModelConfiguration(isStoredInMemoryOnly: true)

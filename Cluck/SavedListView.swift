@@ -37,12 +37,7 @@ struct SavedListView: View {
                     // Main Content
                     if favorites.isEmpty {
                         Spacer()
-                        ContentUnavailableView(
-                            "No Saved Restaurants",
-                            systemImage: "heart.slash",
-                            description: Text("Swipe right on restaurants to save them here")
-                        )
-                        .foregroundStyle(.white)
+                        EmptyStateView.noSavedRestaurants
                         Spacer()
                     } else {
                         List {
