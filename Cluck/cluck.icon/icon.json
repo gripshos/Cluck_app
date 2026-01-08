@@ -6,8 +6,15 @@
     {
       "layers" : [
         {
-          "image-name" : "Gemini_Generated_Image_xwzc0txwzc0txwzc.png",
-          "name" : "Gemini_Generated_Image_xwzc0txwzc0txwzc"
+          "image-name" : "Cluck.png",
+          "name" : "Cluck",
+          "position" : {
+            "scale" : 1.58,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
         }
       ],
       "shadow" : {
