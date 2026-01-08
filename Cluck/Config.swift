@@ -1,6 +1,6 @@
 //
 //  Config.swift
-//  Tendr
+//  Cluck
 //
 //  Configuration for API keys and app settings
 //

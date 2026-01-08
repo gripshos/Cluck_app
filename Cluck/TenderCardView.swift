@@ -6,9 +6,19 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct TenderCardView: View {
     let tender: Tender
+    var userLocation: CLLocation?
+    
+    private var distanceText: String? {
+        guard let userLocation = userLocation else { return nil }
+        let restaurantLocation = CLLocation(latitude: tender.latitude, longitude: tender.longitude)
+        let distanceInMeters = userLocation.distance(from: restaurantLocation)
+        let distanceInMiles = distanceInMeters / 1609.34
+        return String(format: "%.1f mi", distanceInMiles)
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -45,6 +55,32 @@ struct TenderCardView: View {
                     gradientFallback
                 }
                 
+                // "Open Now" / "Closed" badge in top-right corner
+                if let isOpenNow = tender.isOpenNow {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            HStack(spacing: 4) {
+                                Image(systemName: "clock.fill")
+                                    .font(.caption2)
+                                Text(isOpenNow ? "Open" : "Closed")
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                            }
+                            .foregroundStyle(.white)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(
+                                Capsule()
+                                    .fill(isOpenNow ? Color.green.opacity(0.9) : Color.red.opacity(0.9))
+                            )
+                            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+                            .padding([.top, .trailing], 16)
+                        }
+                        Spacer()
+                    }
+                }
+                
                 // Gradient overlay for text legibility
                 LinearGradient(
                     colors: [.clear, .black.opacity(0.8)],
@@ -61,6 +97,22 @@ struct TenderCardView: View {
                         .lineLimit(2)
                         .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 1)
                     
+                    // Star rating and review count
+                    if let rating = tender.rating, let reviewCount = tender.reviewCount {
+                        HStack(spacing: 4) {
+                            ForEach(1...5, id: \.self) { star in
+                                Image(systemName: star <= Int(rating.rounded()) ? "star.fill" : "star")
+                                    .font(.caption)
+                                    .foregroundStyle(star <= Int(rating.rounded()) ? .yellow : .gray.opacity(0.5))
+                            }
+                            
+                            Text("(\(reviewCount))")
+                                .font(.caption)
+                                .foregroundStyle(.white.opacity(0.9))
+                        }
+                        .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 1)
+                    }
+                    
                     HStack {
                         Text(tender.restaurantType)
                             .foregroundStyle(.white.opacity(0.95))
@@ -70,6 +122,14 @@ struct TenderCardView: View {
                         
                         Text(tender.priceRange)
                             .foregroundStyle(.white.opacity(0.95))
+                        
+                        if let distanceText = distanceText {
+                            Text("•")
+                                .foregroundStyle(.white.opacity(0.7))
+                            
+                            Label(distanceText, systemImage: "location.fill")
+                                .foregroundStyle(.white.opacity(0.95))
+                        }
                     }
                     .font(.subheadline)
                     .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 1)
@@ -88,7 +148,8 @@ struct TenderCardView: View {
         }
         .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 20))
-        .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
+        .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+        .shadow(color: .black.opacity(0.15), radius: 20, x: 0, y: 10)
     }
     
     private var gradientFallback: some View {

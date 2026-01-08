@@ -22,6 +22,10 @@ class FavoriteRestaurant {
     var latitude: Double
     var longitude: Double
     var savedDate: Date
+    var rating: Double?
+    var reviewCount: Int?
+    var isOpenNow: Bool?
+    var additionalPhotosData: Data? // Store as JSON data
     
     init(from tender: Tender) {
         self.id = tender.id
@@ -36,11 +40,27 @@ class FavoriteRestaurant {
         self.latitude = tender.latitude
         self.longitude = tender.longitude
         self.savedDate = Date()
+        self.rating = tender.rating
+        self.reviewCount = tender.reviewCount
+        self.isOpenNow = tender.isOpenNow
+        
+        // Encode additional photos to Data
+        if let photos = tender.additionalPhotos {
+            let urls = photos.map { $0.absoluteString }
+            self.additionalPhotosData = try? JSONEncoder().encode(urls)
+        }
     }
     
     // Convert back to Tender for display
     var asTender: Tender {
-        Tender(
+        // Decode additional photos
+        var additionalPhotos: [URL]?
+        if let data = additionalPhotosData,
+           let urls = try? JSONDecoder().decode([String].self, from: data) {
+            additionalPhotos = urls.compactMap { URL(string: $0) }
+        }
+        
+        return Tender(
             id: id,
             name: name,
             restaurantType: restaurantType,
@@ -51,7 +71,11 @@ class FavoriteRestaurant {
             imageName: imageName,
             imageURL: imageURL.flatMap { URL(string: $0) },
             latitude: latitude,
-            longitude: longitude
+            longitude: longitude,
+            rating: rating,
+            reviewCount: reviewCount,
+            isOpenNow: isOpenNow,
+            additionalPhotos: additionalPhotos
         )
     }
 }

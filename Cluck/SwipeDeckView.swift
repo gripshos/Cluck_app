@@ -13,8 +13,8 @@ struct SwipeDeckView: View {
     let modelContext: ModelContext
     
     @State private var dragAmount = CGSize.zero
-    @State private var showDetail = false
     @State private var selectedTender: Tender?
+    @State private var hasTriggeredHaptic = false
     
     var body: some View {
         NavigationStack {
@@ -67,36 +67,85 @@ struct SwipeDeckView: View {
                         )
                         .foregroundStyle(.white)
                     } else {
+                        VStack {
+                            // Undo button (only visible when there's a last swiped restaurant)
+                            if viewModel.lastSwipedRestaurant != nil {
+                                HStack {
+                                    Spacer()
+                                    Button {
+                                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                            viewModel.undoLastSwipe()
+                                        }
+                                    } label: {
+                                        HStack(spacing: 6) {
+                                            Image(systemName: "arrow.uturn.backward")
+                                                .font(.subheadline)
+                                            Text("Undo")
+                                                .font(.subheadline)
+                                                .fontWeight(.medium)
+                                        }
+                                        .foregroundStyle(.white)
+                                        .padding(.horizontal, 16)
+                                        .padding(.vertical, 8)
+                                        .background(
+                                            Capsule()
+                                                .fill(.white.opacity(0.25))
+                                        )
+                                    }
+                                    .padding(.trailing)
+                                    .transition(.move(edge: .trailing).combined(with: .opacity))
+                                }
+                                .padding(.top, 8)
+                            }
+                            
+                            Spacer()
+                        }
+                        .zIndex(10)
+                        
                         // Card deck with proper sizing
                         GeometryReader { geometry in
                             ZStack {
-                                ForEach(Array(viewModel.tenders.enumerated()), id: \.element.id) { index, tender in
-                                    if index == 0 {
-                                        // Only show the top card
-                                        TenderCardView(tender: tender)
-                                            .frame(
-                                                width: geometry.size.width - 40,
-                                                height: min(geometry.size.height * 0.7, 600)
-                                            )
-                                            .position(
-                                                x: geometry.size.width / 2 + dragAmount.width,
-                                                y: geometry.size.height / 2 + dragAmount.height * 0.4
-                                            )
-                                            .rotationEffect(.degrees(Double(dragAmount.width / 20)))
-                                            .gesture(
-                                                DragGesture()
-                                                    .onChanged { gesture in
-                                                        dragAmount = gesture.translation
+                                // Render up to 3 cards with stacking effect
+                                ForEach(Array(viewModel.tenders.prefix(3).enumerated().reversed()), id: \.element.id) { index, tender in
+                                    TenderCardView(tender: tender, userLocation: viewModel.userLocation)
+                                        .frame(
+                                            width: geometry.size.width - 40,
+                                            height: min(geometry.size.height * 0.7, 600)
+                                        )
+                                        .scaleEffect(1.0 - (Double(index) * 0.05))
+                                        .offset(y: CGFloat(index) * 8)
+                                        .position(
+                                            x: geometry.size.width / 2 + (index == 0 ? dragAmount.width : 0),
+                                            y: geometry.size.height / 2 + (index == 0 ? dragAmount.height * 0.4 : 0)
+                                        )
+                                        .rotationEffect(.degrees(index == 0 ? Double(dragAmount.width / 20) : 0))
+                                        .zIndex(Double(3 - index))
+                                        .allowsHitTesting(index == 0)
+                                        .gesture(
+                                            index == 0 ? DragGesture()
+                                                .onChanged { gesture in
+                                                    dragAmount = gesture.translation
+                                                    
+                                                    // Trigger haptic feedback when crossing threshold
+                                                    let threshold: CGFloat = 100
+                                                    if abs(gesture.translation.width) > threshold && !hasTriggeredHaptic {
+                                                        let impact = UIImpactFeedbackGenerator(style: .medium)
+                                                        impact.impactOccurred()
+                                                        hasTriggeredHaptic = true
+                                                    } else if abs(gesture.translation.width) <= threshold {
+                                                        hasTriggeredHaptic = false
                                                     }
-                                                    .onEnded { gesture in
-                                                        handleSwipe(gesture: gesture, tender: tender)
-                                                    }
-                                            )
-                                            .onTapGesture {
+                                                }
+                                                .onEnded { gesture in
+                                                    handleSwipe(gesture: gesture, tender: tender)
+                                                    hasTriggeredHaptic = false
+                                                } : nil
+                                        )
+                                        .onTapGesture {
+                                            if index == 0 {
                                                 selectedTender = tender
-                                                showDetail = true
                                             }
-                                    }
+                                        }
                                 }
                             }
                         }
@@ -111,10 +160,8 @@ struct SwipeDeckView: View {
                     await viewModel.loadRestaurants()
                 }
             }
-            .sheet(isPresented: $showDetail) {
-                if let selectedTender {
-                    ChatDetailView(tender: selectedTender, modelContext: modelContext)
-                }
+            .sheet(item: $selectedTender) { tender in
+                ChatDetailView(tender: tender, modelContext: modelContext)
             }
         }
     }
@@ -127,12 +174,24 @@ struct SwipeDeckView: View {
                 // Swipe right - save
                 saveTender(tender)
                 dragAmount = CGSize(width: 500, height: 0)
+                
+                // Success haptic feedback
+                let notification = UINotificationFeedbackGenerator()
+                notification.notificationOccurred(.success)
             } else if gesture.translation.width < -threshold {
                 // Swipe left - skip
                 dragAmount = CGSize(width: -500, height: 0)
+                
+                // Success haptic feedback
+                let notification = UINotificationFeedbackGenerator()
+                notification.notificationOccurred(.success)
             } else {
                 // Return to center
                 dragAmount = .zero
+                
+                // Light haptic feedback for snap back
+                let light = UIImpactFeedbackGenerator(style: .light)
+                light.impactOccurred()
             }
         }
         

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Your Tendr app now integrates with the **Yelp Fusion API** to fetch real restaurant data with images! Yelp provides high-quality photos, ratings, reviews, and detailed business information.
+Your Cluck app now integrates with the **Yelp Fusion API** to fetch real restaurant data with images! Yelp provides high-quality photos, ratings, reviews, and detailed business information.
 
 ## 🔑 Getting Your Yelp API Key
 
@@ -17,7 +17,7 @@ Your Tendr app now integrates with the **Yelp Fusion API** to fetch real restaur
 1. Once logged in, go to [https://www.yelp.com/developers/v3/manage_app](https://www.yelp.com/developers/v3/manage_app)
 2. Click **"Create New App"**
 3. Fill out the form:
-   - **App Name**: "Tendr" (or any name you prefer)
+   - **App Name**: "Cluck" (or any name you prefer)
    - **Industry**: Food & Restaurants
    - **Contact Email**: Your email
    - **Description**: "A dating app for finding the best chicken tenders nearby"

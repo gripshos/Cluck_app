@@ -1,4 +1,4 @@
-# FIXES APPLIED TO TENDR PROJECT
+# FIXES APPLIED TO CLUCK PROJECT
 
 ## Overview
 I've created all the missing Swift files referenced in your IMPLEMENTATION_NOTES.md. The project should now compile and run correctly.
@@ -207,14 +207,14 @@ You **MUST** add location permission to your Info.plist:
 - Check that `LocationManager` is requesting permission
 
 ### SwiftData Errors
-- Model container is configured in `TendrApp.swift`
+- Model container is configured in `CluckApp.swift`
 - Make sure `FavoriteRestaurant` has `@Model` macro
 - Clear app data and reinstall if needed
 
 ## Architecture Summary
 
 ```
-TendrApp (Entry Point)
+CluckApp (Entry Point)
 ├── AppState (Dependencies)
 │   ├── LocationManager
 │   └── RestaurantSearchService

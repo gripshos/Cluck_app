@@ -1,6 +1,6 @@
 //
 //  Tender.swift
-//  Tendr
+//  Cluck
 //
 //  Data model for restaurants
 //
@@ -19,6 +19,10 @@ struct Tender: Identifiable, Codable, Hashable {
     let imageURL: URL?
     let latitude: Double
     let longitude: Double
+    let rating: Double?
+    let reviewCount: Int?
+    let isOpenNow: Bool?
+    let additionalPhotos: [URL]?
     
     init(
         id: UUID = UUID(),
@@ -31,7 +35,11 @@ struct Tender: Identifiable, Codable, Hashable {
         imageName: String? = nil,
         imageURL: URL? = nil,
         latitude: Double,
-        longitude: Double
+        longitude: Double,
+        rating: Double? = nil,
+        reviewCount: Int? = nil,
+        isOpenNow: Bool? = nil,
+        additionalPhotos: [URL]? = nil
     ) {
         self.id = id
         self.name = name
@@ -44,5 +52,9 @@ struct Tender: Identifiable, Codable, Hashable {
         self.imageURL = imageURL
         self.latitude = latitude
         self.longitude = longitude
+        self.rating = rating
+        self.reviewCount = reviewCount
+        self.isOpenNow = isOpenNow
+        self.additionalPhotos = additionalPhotos
     }
 }

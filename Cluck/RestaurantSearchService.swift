@@ -1,6 +1,6 @@
 //
 //  RestaurantSearchService.swift
-//  Tendr
+//  Cluck
 //
 //  Uses MapKit and Yelp to search for nearby restaurants
 //
@@ -79,7 +79,11 @@ class RestaurantSearchService {
             imageName: nil,
             imageURL: imageURL,
             latitude: yelpBusiness.coordinates.latitude,
-            longitude: yelpBusiness.coordinates.longitude
+            longitude: yelpBusiness.coordinates.longitude,
+            rating: yelpBusiness.rating,
+            reviewCount: yelpBusiness.reviewCount,
+            isOpenNow: nil,
+            additionalPhotos: nil
         )
     }
     

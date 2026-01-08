@@ -1,6 +1,6 @@
 //
 //  YelpService.swift
-//  Tendr
+//  Cluck
 //
 //  Service for fetching restaurant data from Yelp Fusion API
 //

@@ -1,6 +1,6 @@
 //
 //  LocationManager.swift
-//  Tendr
+//  Cluck
 //
 //  Handles user location with CoreLocation
 //

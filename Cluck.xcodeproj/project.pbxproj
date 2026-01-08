@@ -26,11 +26,16 @@
 		D86FB28B2F0DA19B00269EFD /* CANVAS_PREVIEW_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = D86FB28A2F0DA19B00269EFD /* CANVAS_PREVIEW_GUIDE.md */; };
 		D8A213A22583CBD000347F9F /* CluckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213A12583CBD000347F9F /* CluckApp.swift */; };
 		D8A213A62583CBD100347F9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A213A52583CBD100347F9F /* Assets.xcassets */; };
-		D8A213A92583CBD100347F9F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A213A82583CBD100347F9F /* Preview Assets.xcassets */; };
 		D8A213B42583CBD100347F9F /* CluckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213B32583CBD100347F9F /* CluckTests.swift */; };
 		D8A213BF2583CBD100347F9F /* ClluckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213BE2583CBD100347F9F /* ClluckUITests.swift */; };
 		D8B6CA352F0B275500A59D67 /* IMPLEMENTATION_NOTES.md in Resources */ = {isa = PBXBuildFile; fileRef = D8B6CA342F0B275500A59D67 /* IMPLEMENTATION_NOTES.md */; };
 		D8C4D0112F0DA3AD00CFA428 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C4D0102F0DA3AD00CFA428 /* ContentView.swift */; };
+		D8EF009B2F0F444B007E7B4B /* UI_IMPROVEMENTS_COMPLETED.md in Resources */ = {isa = PBXBuildFile; fileRef = D8EF009A2F0F444B007E7B4B /* UI_IMPROVEMENTS_COMPLETED.md */; };
+		D8EF009D2F0F446B007E7B4B /* REMAINING_TASKS.md in Resources */ = {isa = PBXBuildFile; fileRef = D8EF009C2F0F446B007E7B4B /* REMAINING_TASKS.md */; };
+		D8EF009F2F0F44A2007E7B4B /* TESTING_CHECKLIST.md in Resources */ = {isa = PBXBuildFile; fileRef = D8EF009E2F0F44A2007E7B4B /* TESTING_CHECKLIST.md */; };
+		D8EF00A12F0F44CE007E7B4B /* SWIFTDATA_MIGRATION_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = D8EF00A02F0F44CE007E7B4B /* SWIFTDATA_MIGRATION_GUIDE.md */; };
+		D8EF00A32F0F44FA007E7B4B /* README_UI_IMPROVEMENTS.md in Resources */ = {isa = PBXBuildFile; fileRef = D8EF00A22F0F44FA007E7B4B /* README_UI_IMPROVEMENTS.md */; };
+		D8EF00A52F0F451A007E7B4B /* QUICK_START.md in Resources */ = {isa = PBXBuildFile; fileRef = D8EF00A42F0F451A007E7B4B /* QUICK_START.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,20 +73,25 @@
 		D86FB2862F0D9C7100269EFD /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D86FB2882F0D9CD700269EFD /* YELP_SETUP_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = YELP_SETUP_GUIDE.md; sourceTree = "<group>"; };
 		D86FB28A2F0DA19B00269EFD /* CANVAS_PREVIEW_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CANVAS_PREVIEW_GUIDE.md; sourceTree = "<group>"; };
-		D8A2139E2583CBD000347F9F /* Tendr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tendr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8A2139E2583CBD000347F9F /* Cluck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cluck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A213A12583CBD000347F9F /* CluckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CluckApp.swift; sourceTree = "<group>"; };
 		D8A213A32583CBD000347F9F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D8A213A52583CBD100347F9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D8A213A82583CBD100347F9F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D8A213AA2583CBD100347F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D8A213AF2583CBD100347F9F /* TendrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TendrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8A213AF2583CBD100347F9F /* CluckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CluckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A213B32583CBD100347F9F /* CluckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CluckTests.swift; sourceTree = "<group>"; };
 		D8A213B52583CBD100347F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D8A213BA2583CBD100347F9F /* TendrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TendrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8A213BA2583CBD100347F9F /* CluckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CluckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A213BE2583CBD100347F9F /* ClluckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClluckUITests.swift; sourceTree = "<group>"; };
 		D8A213C02583CBD100347F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8B6CA342F0B275500A59D67 /* IMPLEMENTATION_NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = IMPLEMENTATION_NOTES.md; sourceTree = "<group>"; };
 		D8C4D0102F0DA3AD00CFA428 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D8EF009A2F0F444B007E7B4B /* UI_IMPROVEMENTS_COMPLETED.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = UI_IMPROVEMENTS_COMPLETED.md; sourceTree = "<group>"; };
+		D8EF009C2F0F446B007E7B4B /* REMAINING_TASKS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = REMAINING_TASKS.md; sourceTree = "<group>"; };
+		D8EF009E2F0F44A2007E7B4B /* TESTING_CHECKLIST.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TESTING_CHECKLIST.md; sourceTree = "<group>"; };
+		D8EF00A02F0F44CE007E7B4B /* SWIFTDATA_MIGRATION_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SWIFTDATA_MIGRATION_GUIDE.md; sourceTree = "<group>"; };
+		D8EF00A22F0F44FA007E7B4B /* README_UI_IMPROVEMENTS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_UI_IMPROVEMENTS.md; sourceTree = "<group>"; };
+		D8EF00A42F0F451A007E7B4B /* QUICK_START.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = QUICK_START.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,9 +132,9 @@
 		D8A2139F2583CBD000347F9F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D8A2139E2583CBD000347F9F /* Tendr.app */,
-				D8A213AF2583CBD100347F9F /* TendrTests.xctest */,
-				D8A213BA2583CBD100347F9F /* TendrUITests.xctest */,
+				D8A2139E2583CBD000347F9F /* Cluck.app */,
+				D8A213AF2583CBD100347F9F /* CluckTests.xctest */,
+				D8A213BA2583CBD100347F9F /* CluckUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,7 +146,6 @@
 				D8A213A32583CBD000347F9F /* ContentView.swift */,
 				D8A213A52583CBD100347F9F /* Assets.xcassets */,
 				D8A213AA2583CBD100347F9F /* Info.plist */,
-				D8A213A72583CBD100347F9F /* Preview Content */,
 				D8B6CA342F0B275500A59D67 /* IMPLEMENTATION_NOTES.md */,
 				D852C2EE2F0B2AA10089AC29 /* V1_ENHANCEMENTS.md */,
 				D86FB26C2F0D6E9500269EFD /* AppState.swift */,
@@ -156,16 +165,14 @@
 				D86FB2882F0D9CD700269EFD /* YELP_SETUP_GUIDE.md */,
 				D86FB28A2F0DA19B00269EFD /* CANVAS_PREVIEW_GUIDE.md */,
 				D8C4D0102F0DA3AD00CFA428 /* ContentView.swift */,
+				D8EF009A2F0F444B007E7B4B /* UI_IMPROVEMENTS_COMPLETED.md */,
+				D8EF009C2F0F446B007E7B4B /* REMAINING_TASKS.md */,
+				D8EF009E2F0F44A2007E7B4B /* TESTING_CHECKLIST.md */,
+				D8EF00A02F0F44CE007E7B4B /* SWIFTDATA_MIGRATION_GUIDE.md */,
+				D8EF00A22F0F44FA007E7B4B /* README_UI_IMPROVEMENTS.md */,
+				D8EF00A42F0F451A007E7B4B /* QUICK_START.md */,
 			);
 			path = Cluck;
-			sourceTree = "<group>";
-		};
-		D8A213A72583CBD100347F9F /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				D8A213A82583CBD100347F9F /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		D8A213B22583CBD100347F9F /* CluckTests */ = {
@@ -189,9 +196,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D8A2139D2583CBD000347F9F /* Tendr */ = {
+		D8A2139D2583CBD000347F9F /* Cluck */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D8A213C32583CBD100347F9F /* Build configuration list for PBXNativeTarget "Tendr" */;
+			buildConfigurationList = D8A213C32583CBD100347F9F /* Build configuration list for PBXNativeTarget "Cluck" */;
 			buildPhases = (
 				D8A2139A2583CBD000347F9F /* Sources */,
 				D8A2139B2583CBD000347F9F /* Frameworks */,
@@ -201,14 +208,14 @@
 			);
 			dependencies = (
 			);
-			name = Tendr;
+			name = Cluck;
 			productName = Tendr;
-			productReference = D8A2139E2583CBD000347F9F /* Tendr.app */;
+			productReference = D8A2139E2583CBD000347F9F /* Cluck.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D8A213AE2583CBD100347F9F /* TendrTests */ = {
+		D8A213AE2583CBD100347F9F /* CluckTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D8A213C62583CBD100347F9F /* Build configuration list for PBXNativeTarget "TendrTests" */;
+			buildConfigurationList = D8A213C62583CBD100347F9F /* Build configuration list for PBXNativeTarget "CluckTests" */;
 			buildPhases = (
 				D8A213AB2583CBD100347F9F /* Sources */,
 				D8A213AC2583CBD100347F9F /* Frameworks */,
@@ -219,14 +226,14 @@
 			dependencies = (
 				D8A213B12583CBD100347F9F /* PBXTargetDependency */,
 			);
-			name = TendrTests;
+			name = CluckTests;
 			productName = TendrTests;
-			productReference = D8A213AF2583CBD100347F9F /* TendrTests.xctest */;
+			productReference = D8A213AF2583CBD100347F9F /* CluckTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D8A213B92583CBD100347F9F /* TendrUITests */ = {
+		D8A213B92583CBD100347F9F /* CluckUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D8A213C92583CBD100347F9F /* Build configuration list for PBXNativeTarget "TendrUITests" */;
+			buildConfigurationList = D8A213C92583CBD100347F9F /* Build configuration list for PBXNativeTarget "CluckUITests" */;
 			buildPhases = (
 				D8A213B62583CBD100347F9F /* Sources */,
 				D8A213B72583CBD100347F9F /* Frameworks */,
@@ -237,9 +244,9 @@
 			dependencies = (
 				D8A213BC2583CBD100347F9F /* PBXTargetDependency */,
 			);
-			name = TendrUITests;
+			name = CluckUITests;
 			productName = TendrUITests;
-			productReference = D8A213BA2583CBD100347F9F /* TendrUITests.xctest */;
+			productReference = D8A213BA2583CBD100347F9F /* CluckUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -278,9 +285,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D8A2139D2583CBD000347F9F /* Tendr */,
-				D8A213AE2583CBD100347F9F /* TendrTests */,
-				D8A213B92583CBD100347F9F /* TendrUITests */,
+				D8A2139D2583CBD000347F9F /* Cluck */,
+				D8A213AE2583CBD100347F9F /* CluckTests */,
+				D8A213B92583CBD100347F9F /* CluckUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -290,13 +297,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8EF009D2F0F446B007E7B4B /* REMAINING_TASKS.md in Resources */,
 				D86FB2832F0D6F4F00269EFD /* FIXES_APPLIED.md in Resources */,
 				D86FB28B2F0DA19B00269EFD /* CANVAS_PREVIEW_GUIDE.md in Resources */,
 				D852C2EF2F0B2AA10089AC29 /* V1_ENHANCEMENTS.md in Resources */,
-				D8A213A92583CBD100347F9F /* Preview Assets.xcassets in Resources */,
+				D8EF009B2F0F444B007E7B4B /* UI_IMPROVEMENTS_COMPLETED.md in Resources */,
+				D8EF009F2F0F44A2007E7B4B /* TESTING_CHECKLIST.md in Resources */,
+				D8EF00A12F0F44CE007E7B4B /* SWIFTDATA_MIGRATION_GUIDE.md in Resources */,
 				D86FB2892F0D9CD700269EFD /* YELP_SETUP_GUIDE.md in Resources */,
 				D8B6CA352F0B275500A59D67 /* IMPLEMENTATION_NOTES.md in Resources */,
 				D8A213A62583CBD100347F9F /* Assets.xcassets in Resources */,
+				D8EF00A32F0F44FA007E7B4B /* README_UI_IMPROVEMENTS.md in Resources */,
+				D8EF00A52F0F451A007E7B4B /* QUICK_START.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,12 +372,12 @@
 /* Begin PBXTargetDependency section */
 		D8A213B12583CBD100347F9F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D8A2139D2583CBD000347F9F /* Tendr */;
+			target = D8A2139D2583CBD000347F9F /* Cluck */;
 			targetProxy = D8A213B02583CBD100347F9F /* PBXContainerItemProxy */;
 		};
 		D8A213BC2583CBD100347F9F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D8A2139D2583CBD000347F9F /* Tendr */;
+			target = D8A2139D2583CBD000347F9F /* Cluck */;
 			targetProxy = D8A213BB2583CBD100347F9F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -559,7 +571,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tendr.app/Tendr";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cluck.app/Cluck";
 			};
 			name = Debug;
 		};
@@ -579,7 +591,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tendr.app/Tendr";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cluck.app/Cluck";
 			};
 			name = Release;
 		};
@@ -631,7 +643,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D8A213C32583CBD100347F9F /* Build configuration list for PBXNativeTarget "Tendr" */ = {
+		D8A213C32583CBD100347F9F /* Build configuration list for PBXNativeTarget "Cluck" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D8A213C42583CBD100347F9F /* Debug */,
@@ -640,7 +652,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D8A213C62583CBD100347F9F /* Build configuration list for PBXNativeTarget "TendrTests" */ = {
+		D8A213C62583CBD100347F9F /* Build configuration list for PBXNativeTarget "CluckTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D8A213C72583CBD100347F9F /* Debug */,
@@ -649,7 +661,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D8A213C92583CBD100347F9F /* Build configuration list for PBXNativeTarget "TendrUITests" */ = {
+		D8A213C92583CBD100347F9F /* Build configuration list for PBXNativeTarget "CluckUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D8A213CA2583CBD100347F9F /* Debug */,

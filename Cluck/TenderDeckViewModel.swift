@@ -15,9 +15,14 @@ class TenderDeckViewModel {
     var tenders: [Tender] = []
     var isLoading = false
     var errorMessage: String?
+    var lastSwipedRestaurant: Tender?
     
     private let searchService: RestaurantSearchService
     private let locationManager: LocationManager
+    
+    var userLocation: CLLocation? {
+        locationManager.location
+    }
     
     init(searchService: RestaurantSearchService, locationManager: LocationManager) {
         self.searchService = searchService
@@ -48,6 +53,13 @@ class TenderDeckViewModel {
     
     func removeTopCard() {
         guard !tenders.isEmpty else { return }
+        lastSwipedRestaurant = tenders.first
         tenders.removeFirst()
+    }
+    
+    func undoLastSwipe() {
+        guard let lastSwiped = lastSwipedRestaurant else { return }
+        tenders.insert(lastSwiped, at: 0)
+        lastSwipedRestaurant = nil
     }
 }

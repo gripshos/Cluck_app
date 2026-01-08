@@ -1,13 +1,13 @@
 //
-//  TendrUITests.swift
-//  TendrUITests
+//  CluckTests.swift
+//  CluckUITests
 //
 //  Created by Steven Gripshover on 12/11/20.
 //
 
 import XCTest
 
-class TendrUITests: XCTestCase {
+class CluckUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
