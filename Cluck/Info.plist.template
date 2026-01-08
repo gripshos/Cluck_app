@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Your existing keys... -->
+	
+	<!-- REQUIRED: Add this for DoorDash integration -->
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>doordash</string>
+		<!-- Future: Uncomment when adding Uber Eats -->
+		<!-- <string>ubereats</string> -->
+		<!-- Future: Uncomment when adding Grubhub -->
+		<!-- <string>grubhub</string> -->
+	</array>
+	
+	<!-- Your existing keys continue... -->
+</dict>
+</plist>
