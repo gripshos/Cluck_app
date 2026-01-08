@@ -124,9 +124,9 @@ extension EmptyStateView {
     /// Empty state for loading/searching
     static var searching: EmptyStateView {
         EmptyStateView(
-            title: "Hunting for Tenders...",
-            emoji: "🔍",
-            message: "We're finding the best spots near you!"
+            title: "Finding steaming hot tenders near you",
+            emoji: "🐔",
+            message: ""
         )
     }
 }

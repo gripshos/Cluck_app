@@ -33,12 +33,15 @@ struct SwipeDeckView: View {
                 .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
-                    // Custom Header with Logo and Title
-                    CluckHeader(onRefresh: {
-                        Task {
-                            await viewModel.loadRestaurants()
-                        }
-                    })
+                    // Custom Header with Logo and Title (hide when loading)
+                    if !viewModel.isLoading {
+                        CluckHeader(onRefresh: {
+                            Task {
+                                await viewModel.loadRestaurants()
+                            }
+                        })
+                        .transition(.move(edge: .top).combined(with: .opacity))
+                    }
                     
                     // Main Content
                     ZStack {
@@ -213,9 +216,27 @@ struct SwipeDeckView: View {
     }
     
     private func saveTender(_ tender: Tender) {
-        let favorite = FavoriteRestaurant(from: tender)
-        modelContext.insert(favorite)
-        try? modelContext.save()
+        // Check if already saved to prevent duplicates
+        let descriptor = FetchDescriptor<FavoriteRestaurant>(
+            predicate: #Predicate { $0.id == tender.id }
+        )
+        
+        do {
+            let existing = try modelContext.fetch(descriptor)
+            
+            if existing.isEmpty {
+                // Only save if not already in favorites
+                let favorite = FavoriteRestaurant(from: tender)
+                modelContext.insert(favorite)
+                try modelContext.save()
+                print("✅ Saved: \(tender.name)")
+            } else {
+                // Already exists, skip saving
+                print("ℹ️ Already saved: \(tender.name)")
+            }
+        } catch {
+            print("❌ Error checking/saving favorite: \(error)")
+        }
     }
 }
 

@@ -14,6 +14,7 @@ struct RootView: View {
     
     @State private var selectedTab = 0
     @State private var viewModel: TenderDeckViewModel?
+    @State private var hasCompletedInitialLoad = false
     
     init(appState: AppState) {
         self.appState = appState
@@ -45,6 +46,38 @@ struct RootView: View {
     }
     
     var body: some View {
+        Group {
+            if hasCompletedInitialLoad {
+                // Show tab view after initial load
+                tabView
+            } else {
+                // Show loading state without tab bar
+                Group {
+                    if let viewModel {
+                        SwipeDeckView(viewModel: viewModel, modelContext: modelContext)
+                            .onChange(of: viewModel.isLoading) { oldValue, newValue in
+                                // When loading completes, mark initial load as done
+                                if oldValue && !newValue {
+                                    withAnimation(.easeInOut(duration: 0.3)) {
+                                        hasCompletedInitialLoad = true
+                                    }
+                                }
+                            }
+                    } else {
+                        ProgressView()
+                            .onAppear {
+                                viewModel = TenderDeckViewModel(
+                                    searchService: appState.searchService,
+                                    locationManager: appState.locationManager
+                                )
+                            }
+                    }
+                }
+            }
+        }
+    }
+    
+    private var tabView: some View {
         TabView(selection: $selectedTab) {
             // Swipe Deck Tab
             Group {

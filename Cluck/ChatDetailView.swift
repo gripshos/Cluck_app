@@ -119,7 +119,7 @@ struct ChatDetailView: View {
                         Divider()
                         
                         // Quick action buttons - circular icons
-                        HStack(spacing: 24) {
+                        HStack(spacing: 20) {
                             // Call button
                             if let phoneNumber = tender.phoneNumber {
                                 Button {
@@ -140,6 +140,34 @@ struct ChatDetailView: View {
                                             .font(.caption)
                                             .foregroundStyle(.secondary)
                                     }
+                                }
+                            }
+                            
+                            // DoorDash button
+                            Button {
+                                DeliveryService.openDoorDash(restaurantName: tender.name)
+                            } label: {
+                                VStack(spacing: 8) {
+                                    Circle()
+                                        .fill(
+                                            LinearGradient(
+                                                colors: [
+                                                    Color(red: 1.0, green: 0.19, blue: 0.03), // DoorDash red #FF3008
+                                                    Color(red: 0.9, green: 0.1, blue: 0.0)
+                                                ],
+                                                startPoint: .topLeading,
+                                                endPoint: .bottomTrailing
+                                            )
+                                        )
+                                        .frame(width: 60, height: 60)
+                                        .overlay {
+                                            Image(systemName: "bag.fill")
+                                                .font(.title3)
+                                                .foregroundStyle(.white)
+                                        }
+                                    Text("Order")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
                                 }
                             }
                             
@@ -366,16 +394,31 @@ struct ChatDetailView: View {
                 // Remove from favorites
                 modelContext.delete(existing)
                 isFavorite = false
+                print("🗑️ Removed from favorites: \(tender.name)")
             } else {
-                // Add to favorites
-                let favorite = FavoriteRestaurant(from: tender)
-                modelContext.insert(favorite)
-                isFavorite = true
+                // Double-check: verify no duplicates before adding
+                // This prevents race conditions from multiple sessions
+                let verifyDescriptor = FetchDescriptor<FavoriteRestaurant>(
+                    predicate: #Predicate { $0.id == tender.id }
+                )
+                let verifyResults = try modelContext.fetch(verifyDescriptor)
+                
+                if verifyResults.isEmpty {
+                    // Safe to add - no duplicates found
+                    let favorite = FavoriteRestaurant(from: tender)
+                    modelContext.insert(favorite)
+                    isFavorite = true
+                    print("✅ Added to favorites: \(tender.name)")
+                } else {
+                    // Duplicate detected, just update UI state
+                    isFavorite = true
+                    print("ℹ️ Already in favorites (duplicate prevented): \(tender.name)")
+                }
             }
             
             try modelContext.save()
         } catch {
-            print("Error toggling favorite: \(error)")
+            print("❌ Error toggling favorite: \(error)")
         }
     }
 }
