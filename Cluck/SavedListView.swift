@@ -70,15 +70,11 @@ struct SavedListView: View {
             .fullScreenCover(isPresented: $showOnboarding) {
                 OnboardingView(isPresented: $showOnboarding)
             }
-            .confirmationDialog(
-                "Restart Tutorial",
-                isPresented: $showRestartTutorialConfirmation,
-                titleVisibility: .visible
-            ) {
+            .alert("Restart Tutorial", isPresented: $showRestartTutorialConfirmation) {
+                Button("Cancel", role: .cancel) {}
                 Button("Show Tutorial") {
                     showOnboarding = true
                 }
-                Button("Cancel", role: .cancel) {}
             } message: {
                 Text("Would you like to see the app tutorial again?")
             }
