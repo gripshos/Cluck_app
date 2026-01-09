@@ -291,8 +291,3 @@ struct OnboardingPageView: View {
     }
 }
 
-// MARK: - Preview
-
-#Preview {
-    OnboardingView(isPresented: .constant(true))
-}

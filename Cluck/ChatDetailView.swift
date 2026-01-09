@@ -423,20 +423,3 @@ struct ChatDetailView: View {
     }
 }
 
-#Preview {
-    ChatDetailView(
-        tender: Tender(
-            name: "Raising Cane's",
-            restaurantType: "Fast Food",
-            priceRange: "$",
-            address: "123 Main St, San Francisco, CA",
-            phoneNumber: "555-1234",
-            websiteURL: URL(string: "https://example.com"),
-            latitude: 37.7749,
-            longitude: -122.4194
-        ),
-        modelContext: ModelContext(
-            try! ModelContainer(for: FavoriteRestaurant.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
-        )
-    )
-}

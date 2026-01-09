@@ -22,7 +22,6 @@
 		D86FB2872F0D9C7100269EFD /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB2862F0D9C7100269EFD /* Config.swift */; };
 		D8A213A22583CBD000347F9F /* CluckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213A12583CBD000347F9F /* CluckApp.swift */; };
 		D8A213A62583CBD100347F9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A213A52583CBD100347F9F /* Assets.xcassets */; };
-		D8A213B42583CBD100347F9F /* CluckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213B32583CBD100347F9F /* CluckTests.swift */; };
 		D8A213BF2583CBD100347F9F /* ClluckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A213BE2583CBD100347F9F /* ClluckUITests.swift */; };
 		D8B365C32F100B92005178DA /* cluck.icon in Resources */ = {isa = PBXBuildFile; fileRef = D8B365C22F100B92005178DA /* cluck.icon */; };
 		D8B365DC2F103551005178DA /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B365DB2F103551005178DA /* EmptyStateView.swift */; };
@@ -31,6 +30,11 @@
 		D8B366002F115579005178DA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B365FF2F115579005178DA /* OnboardingView.swift */; };
 		D8B366022F1155C3005178DA /* OnboardingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B366012F1155C3005178DA /* OnboardingHelper.swift */; };
 		D8B366042F1155E5005178DA /* ONBOARDING_DOCUMENTATION.md in Resources */ = {isa = PBXBuildFile; fileRef = D8B366032F1155E5005178DA /* ONBOARDING_DOCUMENTATION.md */; };
+		D8B3660C2F11712D005178DA /* StoreKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B366052F11659A005178DA /* StoreKitService.swift */; };
+		D8B3660D2F117162005178DA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B366082F1165D5005178DA /* SettingsView.swift */; };
+		D8B3660E2F117167005178DA /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B366072F1165C2005178DA /* TipJarView.swift */; };
+		D8B3660F2F11716C005178DA /* TipJarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B366062F1165A4005178DA /* TipJarViewModel.swift */; };
+		D8B366102F117174005178DA /* Cluck.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D8B366092F11663E005178DA /* Cluck.storekit */; };
 		D8C4D0112F0DA3AD00CFA428 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C4D0102F0DA3AD00CFA428 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,8 +75,6 @@
 		D8A213A52583CBD100347F9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8A213AA2583CBD100347F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8A213AF2583CBD100347F9F /* CluckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CluckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8A213B32583CBD100347F9F /* CluckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CluckTests.swift; sourceTree = "<group>"; };
-		D8A213B52583CBD100347F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8A213BA2583CBD100347F9F /* CluckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CluckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A213BE2583CBD100347F9F /* ClluckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClluckUITests.swift; sourceTree = "<group>"; };
 		D8A213C02583CBD100347F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,6 +100,13 @@
 		D8B365FF2F115579005178DA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D8B366012F1155C3005178DA /* OnboardingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingHelper.swift; sourceTree = "<group>"; };
 		D8B366032F1155E5005178DA /* ONBOARDING_DOCUMENTATION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ONBOARDING_DOCUMENTATION.md; sourceTree = "<group>"; };
+		D8B366052F11659A005178DA /* StoreKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitService.swift; sourceTree = "<group>"; };
+		D8B366062F1165A4005178DA /* TipJarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarViewModel.swift; sourceTree = "<group>"; };
+		D8B366072F1165C2005178DA /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
+		D8B366082F1165D5005178DA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D8B366092F11663E005178DA /* Cluck.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cluck.storekit; sourceTree = "<group>"; };
+		D8B3660A2F116683005178DA /* TIP_JAR_IMPLEMENTATION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TIP_JAR_IMPLEMENTATION.md; sourceTree = "<group>"; };
+		D8B3660B2F116693005178DA /* TESTING_QUICKSTART.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TESTING_QUICKSTART.md; sourceTree = "<group>"; };
 		D8C4D0102F0DA3AD00CFA428 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				D8A213A02583CBD000347F9F /* Cluck */,
-				D8A213B22583CBD100347F9F /* CluckTests */,
 				D8A213BD2583CBD100347F9F /* CluckUITests */,
 				D8A2139F2583CBD000347F9F /* Products */,
 				D8B365C42F102DD2005178DA /* TenderTests.swift */,
@@ -148,6 +156,7 @@
 				D8B365D02F103361005178DA /* RestaurantSearchServiceTests 2.swift */,
 				D8B365D12F103372005178DA /* AppStateTests.swift */,
 				D8B365D22F1033A4005178DA /* ViewIntegrationTests.swift */,
+				D8B3660B2F116693005178DA /* TESTING_QUICKSTART.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,18 +197,15 @@
 				D8B365EF2F103C27005178DA /* FavoritesHelper.swift */,
 				D8B365FF2F115579005178DA /* OnboardingView.swift */,
 				D8B366012F1155C3005178DA /* OnboardingHelper.swift */,
+				D8B366052F11659A005178DA /* StoreKitService.swift */,
+				D8B366062F1165A4005178DA /* TipJarViewModel.swift */,
+				D8B366072F1165C2005178DA /* TipJarView.swift */,
+				D8B366082F1165D5005178DA /* SettingsView.swift */,
+				D8B366092F11663E005178DA /* Cluck.storekit */,
+				D8B3660A2F116683005178DA /* TIP_JAR_IMPLEMENTATION.md */,
 				D8B366032F1155E5005178DA /* ONBOARDING_DOCUMENTATION.md */,
 			);
 			path = Cluck;
-			sourceTree = "<group>";
-		};
-		D8A213B22583CBD100347F9F /* CluckTests */ = {
-			isa = PBXGroup;
-			children = (
-				D8A213B32583CBD100347F9F /* CluckTests.swift */,
-				D8A213B52583CBD100347F9F /* Info.plist */,
-			);
-			path = CluckTests;
 			sourceTree = "<group>";
 		};
 		D8A213BD2583CBD100347F9F /* CluckUITests */ = {
@@ -318,6 +324,7 @@
 				D8A213A62583CBD100347F9F /* Assets.xcassets in Resources */,
 				D8B365C32F100B92005178DA /* cluck.icon in Resources */,
 				D8B366042F1155E5005178DA /* ONBOARDING_DOCUMENTATION.md in Resources */,
+				D8B366102F117174005178DA /* Cluck.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,11 +355,14 @@
 				D86FB26F2F0D6E9B00269EFD /* Tender.swift in Sources */,
 				D86FB2872F0D9C7100269EFD /* Config.swift in Sources */,
 				D8B365F02F103C27005178DA /* FavoritesHelper.swift in Sources */,
+				D8B3660F2F11716C005178DA /* TipJarViewModel.swift in Sources */,
 				D8B365DC2F103551005178DA /* EmptyStateView.swift in Sources */,
 				D86FB2732F0D6EA900269EFD /* LocationManager.swift in Sources */,
 				D86FB27B2F0D6EDB00269EFD /* SwipeDeckView.swift in Sources */,
 				D86FB2852F0D9C6B00269EFD /* YelpService.swift in Sources */,
+				D8B3660C2F11712D005178DA /* StoreKitService.swift in Sources */,
 				D86FB2712F0D6EA300269EFD /* FavoriteRestaurant.swift in Sources */,
+				D8B3660E2F117167005178DA /* TipJarView.swift in Sources */,
 				D8B366002F115579005178DA /* OnboardingView.swift in Sources */,
 				D8B366022F1155C3005178DA /* OnboardingHelper.swift in Sources */,
 				D86FB2812F0D6F0D00269EFD /* ChatDetailView.swift in Sources */,
@@ -362,6 +372,7 @@
 				D86FB27F2F0D6EF600269EFD /* SavedListView.swift in Sources */,
 				D8A213A22583CBD000347F9F /* CluckApp.swift in Sources */,
 				D86FB27D2F0D6EE800269EFD /* TenderCardView.swift in Sources */,
+				D8B3660D2F117162005178DA /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +380,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8A213B42583CBD100347F9F /* CluckTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

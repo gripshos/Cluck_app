@@ -252,7 +252,3 @@ struct SavedRestaurantRow: View {
     }
 }
 
-#Preview {
-    SavedListView()
-        .modelContainer(for: FavoriteRestaurant.self, inMemory: true)
-}

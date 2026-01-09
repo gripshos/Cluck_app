@@ -11,10 +11,12 @@ import SwiftData
 struct SwipeDeckView: View {
     @Bindable var viewModel: TenderDeckViewModel
     let modelContext: ModelContext
+    let storeKitService: StoreKitService
     
     @State private var dragAmount = CGSize.zero
     @State private var selectedTender: Tender?
     @State private var hasTriggeredHaptic = false
+    @State private var showSettings = false
     
     var body: some View {
         NavigationStack {
@@ -35,11 +37,16 @@ struct SwipeDeckView: View {
                 VStack(spacing: 0) {
                     // Custom Header with Logo and Title (hide when loading)
                     if !viewModel.isLoading {
-                        CluckHeader(onRefresh: {
-                            Task {
-                                await viewModel.loadRestaurants()
+                        CluckHeader(
+                            onRefresh: {
+                                Task {
+                                    await viewModel.loadRestaurants()
+                                }
+                            },
+                            onSettings: {
+                                showSettings = true
                             }
-                        })
+                        )
                         .transition(.move(edge: .top).combined(with: .opacity))
                     }
                     
@@ -51,6 +58,37 @@ struct SwipeDeckView: View {
                     } else if let errorMessage = viewModel.errorMessage {
                         if errorMessage.contains("location") {
                             EmptyStateView.locationDenied
+                        } else if errorMessage.contains("already in your saved list") {
+                            // All restaurants are already saved
+                            VStack(spacing: 20) {
+                                Text("🎉")
+                                    .font(.system(size: 80))
+                                Text("All Done!")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.white)
+                                Text("You've saved all nearby restaurants.\nCheck your Saved list or try again later!")
+                                    .font(.body)
+                                    .foregroundStyle(.white.opacity(0.9))
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal, 40)
+                                
+                                Button {
+                                    Task {
+                                        await viewModel.loadRestaurants()
+                                    }
+                                } label: {
+                                    Text("Refresh")
+                                        .font(.headline)
+                                        .foregroundStyle(.white)
+                                        .padding(.horizontal, 30)
+                                        .padding(.vertical, 12)
+                                        .background(
+                                            Capsule()
+                                                .fill(.white.opacity(0.25))
+                                        )
+                                }
+                            }
                         } else {
                             EmptyStateView.networkError(onRetry: {
                                 Task {
@@ -105,52 +143,7 @@ struct SwipeDeckView: View {
                             ZStack {
                                 // Render up to 3 cards with stacking effect
                                 ForEach(Array(viewModel.tenders.prefix(3).enumerated().reversed()), id: \.element.id) { index, tender in
-                                    ZStack {
-                                        TenderCardView(tender: tender, userLocation: viewModel.userLocation)
-                                        
-                                        // Like/Nope overlay (only on top card)
-                                        if index == 0 {
-                                            SwipeOverlayView(dragAmount: dragAmount)
-                                        }
-                                    }
-                                    .frame(
-                                        width: geometry.size.width - 40,
-                                        height: min(geometry.size.height * 0.7, 600)
-                                    )
-                                    .scaleEffect(1.0 - (Double(index) * 0.05))
-                                    .offset(y: CGFloat(index) * 8)
-                                    .position(
-                                        x: geometry.size.width / 2 + (index == 0 ? dragAmount.width : 0),
-                                        y: geometry.size.height / 2 + (index == 0 ? dragAmount.height * 0.4 : 0)
-                                    )
-                                    .rotationEffect(.degrees(index == 0 ? Double(dragAmount.width / 20) : 0))
-                                    .zIndex(Double(3 - index))
-                                    .allowsHitTesting(index == 0)
-                                        .gesture(
-                                            index == 0 ? DragGesture()
-                                                .onChanged { gesture in
-                                                    dragAmount = gesture.translation
-                                                    
-                                                    // Trigger haptic feedback when crossing threshold
-                                                    let threshold: CGFloat = 100
-                                                    if abs(gesture.translation.width) > threshold && !hasTriggeredHaptic {
-                                                        let impact = UIImpactFeedbackGenerator(style: .medium)
-                                                        impact.impactOccurred()
-                                                        hasTriggeredHaptic = true
-                                                    } else if abs(gesture.translation.width) <= threshold {
-                                                        hasTriggeredHaptic = false
-                                                    }
-                                                }
-                                                .onEnded { gesture in
-                                                    handleSwipe(gesture: gesture, tender: tender)
-                                                    hasTriggeredHaptic = false
-                                                } : nil
-                                        )
-                                        .onTapGesture {
-                                            if index == 0 {
-                                                selectedTender = tender
-                                            }
-                                        }
+                                    cardView(for: tender, at: index, in: geometry)
                                 }
                             }
                         }
@@ -168,6 +161,65 @@ struct SwipeDeckView: View {
             .sheet(item: $selectedTender) { tender in
                 ChatDetailView(tender: tender, modelContext: modelContext)
             }
+            .sheet(isPresented: $showSettings) {
+                SettingsView(storeKitService: storeKitService)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func cardView(for tender: Tender, at index: Int, in geometry: GeometryProxy) -> some View {
+        let cardContent = ZStack {
+            TenderCardView(tender: tender, userLocation: viewModel.userLocation)
+            
+            // Like/Nope overlay (only on top card)
+            if index == 0 {
+                SwipeOverlayView(dragAmount: dragAmount)
+            }
+        }
+        .frame(
+            width: geometry.size.width - 40,
+            height: min(geometry.size.height * 0.7, 600)
+        )
+        .scaleEffect(1.0 - (Double(index) * 0.05))
+        .offset(y: CGFloat(index) * 8)
+        .position(
+            x: geometry.size.width / 2 + (index == 0 ? dragAmount.width : 0),
+            y: geometry.size.height / 2 + (index == 0 ? dragAmount.height * 0.4 : 0)
+        )
+        .rotationEffect(.degrees(index == 0 ? Double(dragAmount.width / 20) : 0))
+        .zIndex(Double(3 - index))
+        .allowsHitTesting(index == 0)
+        .onTapGesture {
+            if index == 0 {
+                selectedTender = tender
+            }
+        }
+        
+        if index == 0 {
+            cardContent
+                .gesture(
+                    DragGesture()
+                        .onChanged { gesture in
+                            dragAmount = gesture.translation
+                            
+                            // Trigger haptic feedback when crossing threshold
+                            let threshold: CGFloat = 100
+                            if abs(gesture.translation.width) > threshold && !hasTriggeredHaptic {
+                                let impact = UIImpactFeedbackGenerator(style: .medium)
+                                impact.impactOccurred()
+                                hasTriggeredHaptic = true
+                            } else if abs(gesture.translation.width) <= threshold {
+                                hasTriggeredHaptic = false
+                            }
+                        }
+                        .onEnded { gesture in
+                            handleSwipe(gesture: gesture, tender: tender)
+                            hasTriggeredHaptic = false
+                        }
+                )
+        } else {
+            cardContent
         }
     }
     
@@ -244,6 +296,7 @@ struct SwipeDeckView: View {
 
 struct CluckHeader: View {
     let onRefresh: () -> Void
+    let onSettings: () -> Void
     
     var body: some View {
         ZStack {
@@ -276,6 +329,20 @@ struct CluckHeader: View {
                     .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
                 
                 Spacer()
+                
+                // Settings button
+                Button(action: onSettings) {
+                    Image(systemName: "gearshape.fill")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.white)
+                        .frame(width: 44, height: 44)
+                        .background(
+                            Circle()
+                                .fill(.white.opacity(0.2))
+                        )
+                }
+                .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
                 
                 // Refresh button
                 Button(action: onRefresh) {
@@ -374,73 +441,6 @@ struct SwipeOverlayView: View {
     }
 }
 
-// MARK: - Preview Support
 
-#Preview("With Restaurants") {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: FavoriteRestaurant.self, configurations: config)
-    let context = container.mainContext
-    
-    // Create mock data
-    let mockViewModel = TenderDeckViewModel(
-        searchService: RestaurantSearchService(yelpService: YelpService(apiKey: "mock")),
-        locationManager: LocationManager()
-    )
-    
-    // Add mock tenders
-    mockViewModel.tenders = [
-        Tender(
-            name: "Raising Cane's Chicken Fingers",
-            restaurantType: "Fast Food",
-            priceRange: "$",
-            address: "123 Main St, San Francisco, CA",
-            phoneNumber: "(555) 123-4567",
-            websiteURL: URL(string: "https://example.com"),
-            imageURL: URL(string: "https://s3-media0.fl.yelpcdn.com/bphoto/example1.jpg"),
-            latitude: 37.7749,
-            longitude: -122.4194
-        ),
-        Tender(
-            name: "Popeyes Louisiana Kitchen",
-            restaurantType: "Fast Food",
-            priceRange: "$$",
-            address: "456 Oak Ave, Los Angeles, CA",
-            phoneNumber: "(555) 987-6543",
-            websiteURL: URL(string: "https://example.com"),
-            imageURL: URL(string: "https://s3-media0.fl.yelpcdn.com/bphoto/example2.jpg"),
-            latitude: 34.0522,
-            longitude: -118.2437
-        )
-    ]
-    
-    return SwipeDeckView(viewModel: mockViewModel, modelContext: context)
-}
 
-#Preview("Loading") {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: FavoriteRestaurant.self, configurations: config)
-    let context = container.mainContext
-    
-    let mockViewModel = TenderDeckViewModel(
-        searchService: RestaurantSearchService(yelpService: YelpService(apiKey: "mock")),
-        locationManager: LocationManager()
-    )
-    mockViewModel.isLoading = true
-    
-    return SwipeDeckView(viewModel: mockViewModel, modelContext: context)
-}
-
-#Preview("Empty State") {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: FavoriteRestaurant.self, configurations: config)
-    let context = container.mainContext
-    
-    let mockViewModel = TenderDeckViewModel(
-        searchService: RestaurantSearchService(yelpService: YelpService(apiKey: "mock")),
-        locationManager: LocationManager()
-    )
-    mockViewModel.tenders = []
-    
-    return SwipeDeckView(viewModel: mockViewModel, modelContext: context)
-}
 

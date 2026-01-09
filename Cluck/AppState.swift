@@ -19,9 +19,15 @@ class AppState {
     // Restaurant search service
     let searchService: RestaurantSearchService
     
+    // StoreKit service for tip jar
+    let storeKitService: StoreKitService
+    
     init() {
         // Initialize search service with Yelp integration
         self.searchService = RestaurantSearchService(yelpService: yelpService)
+        
+        // Initialize StoreKit service
+        self.storeKitService = StoreKitService()
         
         // Request location permission on app launch
         locationManager.requestLocation()

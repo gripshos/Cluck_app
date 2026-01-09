@@ -54,7 +54,11 @@ struct RootView: View {
                 // Show loading state without tab bar
                 Group {
                     if let viewModel {
-                        SwipeDeckView(viewModel: viewModel, modelContext: modelContext)
+                        SwipeDeckView(
+                            viewModel: viewModel,
+                            modelContext: modelContext,
+                            storeKitService: appState.storeKitService
+                        )
                             .onChange(of: viewModel.isLoading) { oldValue, newValue in
                                 // When loading completes, mark initial load as done
                                 if oldValue && !newValue {
@@ -68,7 +72,8 @@ struct RootView: View {
                             .onAppear {
                                 viewModel = TenderDeckViewModel(
                                     searchService: appState.searchService,
-                                    locationManager: appState.locationManager
+                                    locationManager: appState.locationManager,
+                                    modelContext: modelContext
                                 )
                             }
                     }
@@ -82,13 +87,18 @@ struct RootView: View {
             // Swipe Deck Tab
             Group {
                 if let viewModel {
-                    SwipeDeckView(viewModel: viewModel, modelContext: modelContext)
+                    SwipeDeckView(
+                        viewModel: viewModel,
+                        modelContext: modelContext,
+                        storeKitService: appState.storeKitService
+                    )
                 } else {
                     ProgressView()
                         .onAppear {
                             viewModel = TenderDeckViewModel(
                                 searchService: appState.searchService,
-                                locationManager: appState.locationManager
+                                locationManager: appState.locationManager,
+                                modelContext: modelContext
                             )
                         }
                 }
@@ -108,41 +118,5 @@ struct RootView: View {
         .tint(Color(red: 1.0, green: 0.3, blue: 0.2))
     }
 }
-// MARK: - Preview Support
 
-#Preview("Discover Tab") {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: FavoriteRestaurant.self, configurations: config)
-    
-    let mockAppState = AppState()
-    
-    return RootView(appState: mockAppState)
-        .modelContainer(container)
-}
-
-#Preview("Saved Tab") {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: FavoriteRestaurant.self, configurations: config)
-    let context = container.mainContext
-    
-    // Add some mock saved restaurants
-    let mockTender = Tender(
-        name: "Raising Cane's",
-        restaurantType: "Fast Food",
-        priceRange: "$",
-        address: "123 Main St, San Francisco, CA",
-        latitude: 37.7749,
-        longitude: -122.4194
-    )
-    let mockFavorite = FavoriteRestaurant(from: mockTender)
-    context.insert(mockFavorite)
-    
-    let mockAppState = AppState()
-    
-    return RootView(appState: mockAppState)
-        .modelContainer(container)
-        .onAppear {
-            // Switch to saved tab
-        }
-}
 
