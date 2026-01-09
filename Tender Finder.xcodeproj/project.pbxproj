@@ -69,7 +69,7 @@
 		D86FB2802F0D6F0D00269EFD /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
 		D86FB2842F0D9C6B00269EFD /* YelpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpService.swift; sourceTree = "<group>"; };
 		D86FB2862F0D9C7100269EFD /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		D8A2139E2583CBD000347F9F /* Cluck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cluck.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8A2139E2583CBD000347F9F /* Tender Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tender Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A213A12583CBD000347F9F /* CluckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CluckApp.swift; sourceTree = "<group>"; };
 		D8A213A32583CBD000347F9F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D8A213A52583CBD100347F9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 		D8A213952583CBD000347F9F = {
 			isa = PBXGroup;
 			children = (
-				D8A213A02583CBD000347F9F /* Cluck Tender Finder */,
+				D8A213A02583CBD000347F9F /* Tender Finder */,
 				D8A213BD2583CBD100347F9F /* CluckUITests */,
 				D8A2139F2583CBD000347F9F /* Products */,
 				D8B365C42F102DD2005178DA /* TenderTests.swift */,
@@ -163,14 +163,14 @@
 		D8A2139F2583CBD000347F9F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D8A2139E2583CBD000347F9F /* Cluck.app */,
+				D8A2139E2583CBD000347F9F /* Tender Finder.app */,
 				D8A213AF2583CBD100347F9F /* CluckTests.xctest */,
 				D8A213BA2583CBD100347F9F /* CluckUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D8A213A02583CBD000347F9F /* Cluck Tender Finder */ = {
+		D8A213A02583CBD000347F9F /* Tender Finder */ = {
 			isa = PBXGroup;
 			children = (
 				D8A213A12583CBD000347F9F /* CluckApp.swift */,
@@ -205,7 +205,7 @@
 				D8B3660A2F116683005178DA /* TIP_JAR_IMPLEMENTATION.md */,
 				D8B366032F1155E5005178DA /* ONBOARDING_DOCUMENTATION.md */,
 			);
-			path = "Cluck Tender Finder";
+			path = "Tender Finder";
 			sourceTree = "<group>";
 		};
 		D8A213BD2583CBD100347F9F /* CluckUITests */ = {
@@ -220,9 +220,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D8A2139D2583CBD000347F9F /* Cluck */ = {
+		D8A2139D2583CBD000347F9F /* Tender Finder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D8A213C32583CBD100347F9F /* Build configuration list for PBXNativeTarget "Cluck" */;
+			buildConfigurationList = D8A213C32583CBD100347F9F /* Build configuration list for PBXNativeTarget "Tender Finder" */;
 			buildPhases = (
 				D8A2139A2583CBD000347F9F /* Sources */,
 				D8A2139B2583CBD000347F9F /* Frameworks */,
@@ -232,9 +232,9 @@
 			);
 			dependencies = (
 			);
-			name = Cluck;
+			name = "Tender Finder";
 			productName = Tendr;
-			productReference = D8A2139E2583CBD000347F9F /* Cluck.app */;
+			productReference = D8A2139E2583CBD000347F9F /* Tender Finder.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D8A213AE2583CBD100347F9F /* CluckTests */ = {
@@ -296,7 +296,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Cluck Tender Finder" */;
+			buildConfigurationList = D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Tender Finder" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -309,7 +309,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D8A2139D2583CBD000347F9F /* Cluck */,
+				D8A2139D2583CBD000347F9F /* Tender Finder */,
 				D8A213AE2583CBD100347F9F /* CluckTests */,
 				D8A213B92583CBD100347F9F /* CluckUITests */,
 			);
@@ -396,12 +396,12 @@
 /* Begin PBXTargetDependency section */
 		D8A213B12583CBD100347F9F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D8A2139D2583CBD000347F9F /* Cluck */;
+			target = D8A2139D2583CBD000347F9F /* Tender Finder */;
 			targetProxy = D8A213B02583CBD100347F9F /* PBXContainerItemProxy */;
 		};
 		D8A213BC2583CBD100347F9F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D8A2139D2583CBD000347F9F /* Cluck */;
+			target = D8A2139D2583CBD000347F9F /* Tender Finder */;
 			targetProxy = D8A213BB2583CBD100347F9F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -536,11 +536,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Cluck Tender Finder/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Tender Finder/Preview Content\"";
 				DEVELOPMENT_TEAM = X28ZS48FD3;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Cluck Tender Finder/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Cluck: Tender Finder";
+				INFOPLIST_FILE = "Tender Finder/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Tender Finder";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -548,7 +548,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "SAG.Cluck-TenderFinder";
+				PRODUCT_BUNDLE_IDENTIFIER = SAG.TenderFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -562,11 +562,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Cluck Tender Finder/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Tender Finder/Preview Content\"";
 				DEVELOPMENT_TEAM = X28ZS48FD3;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Cluck Tender Finder/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Cluck: Tender Finder";
+				INFOPLIST_FILE = "Tender Finder/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Tender Finder";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -574,7 +574,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "SAG.Cluck-TenderFinder";
+				PRODUCT_BUNDLE_IDENTIFIER = SAG.TenderFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -660,7 +660,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Cluck Tender Finder" */ = {
+		D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Tender Finder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D8A213C12583CBD100347F9F /* Debug */,
@@ -669,7 +669,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D8A213C32583CBD100347F9F /* Build configuration list for PBXNativeTarget "Cluck" */ = {
+		D8A213C32583CBD100347F9F /* Build configuration list for PBXNativeTarget "Tender Finder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D8A213C42583CBD100347F9F /* Debug */,
