@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D8A2139D2583CBD000347F9F"
-               BuildableName = "Tender Finder.app"
-               BlueprintName = "Tender Finder"
-               ReferencedContainer = "container:Tender Finder.xcodeproj">
+               BuildableName = "Tendrrr.app"
+               BlueprintName = "Tendrrr"
+               ReferencedContainer = "container:Tendrrr.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -37,7 +37,7 @@
                BlueprintIdentifier = "D8A213AE2583CBD100347F9F"
                BuildableName = "CluckTests.xctest"
                BlueprintName = "CluckTests"
-               ReferencedContainer = "container:Tender Finder.xcodeproj">
+               ReferencedContainer = "container:Tendrrr.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -47,7 +47,7 @@
                BlueprintIdentifier = "D8A213B92583CBD100347F9F"
                BuildableName = "CluckUITests.xctest"
                BlueprintName = "CluckUITests"
-               ReferencedContainer = "container:Tender Finder.xcodeproj">
+               ReferencedContainer = "container:Tendrrr.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -67,13 +67,13 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D8A2139D2583CBD000347F9F"
-            BuildableName = "Tender Finder.app"
-            BlueprintName = "Tender Finder"
-            ReferencedContainer = "container:Tender Finder.xcodeproj">
+            BuildableName = "Tendrrr.app"
+            BlueprintName = "Tendrrr"
+            ReferencedContainer = "container:Tendrrr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
-         identifier = "../../Tender Finder/Cluck.storekit">
+         identifier = "../../Tendrrr/Cluck.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
@@ -87,9 +87,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D8A2139D2583CBD000347F9F"
-            BuildableName = "Tender Finder.app"
-            BlueprintName = "Tender Finder"
-            ReferencedContainer = "container:Tender Finder.xcodeproj">
+            BuildableName = "Tendrrr.app"
+            BlueprintName = "Tendrrr"
+            ReferencedContainer = "container:Tendrrr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
