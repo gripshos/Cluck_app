@@ -14,6 +14,8 @@ struct SavedListView: View {
     
     @State private var selectedTender: Tender?
     @State private var editMode: EditMode = .inactive
+    @State private var showOnboarding = false
+    @State private var showRestartTutorialConfirmation = false
     
     var body: some View {
         NavigationStack {
@@ -32,7 +34,13 @@ struct SavedListView: View {
                 
                 VStack(spacing: 0) {
                     // Custom Header with Edit Button
-                    SavedHeader(showEdit: !favorites.isEmpty, editMode: $editMode)
+                    SavedHeader(
+                        showEdit: !favorites.isEmpty,
+                        editMode: $editMode,
+                        onHelpTapped: {
+                            showRestartTutorialConfirmation = true
+                        }
+                    )
                     
                     // Main Content
                     if favorites.isEmpty {
@@ -59,6 +67,21 @@ struct SavedListView: View {
             .sheet(item: $selectedTender) { tender in
                 ChatDetailView(tender: tender, modelContext: modelContext)
             }
+            .fullScreenCover(isPresented: $showOnboarding) {
+                OnboardingView(isPresented: $showOnboarding)
+            }
+            .confirmationDialog(
+                "Restart Tutorial",
+                isPresented: $showRestartTutorialConfirmation,
+                titleVisibility: .visible
+            ) {
+                Button("Show Tutorial") {
+                    showOnboarding = true
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("Would you like to see the app tutorial again?")
+            }
         }
     }
     
@@ -75,6 +98,7 @@ struct SavedListView: View {
 struct SavedHeader: View {
     let showEdit: Bool
     @Binding var editMode: EditMode
+    let onHelpTapped: () -> Void
     
     var body: some View {
         ZStack {
@@ -108,6 +132,20 @@ struct SavedHeader: View {
                     .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
                 
                 Spacer()
+                
+                // Help button (always visible)
+                Button(action: onHelpTapped) {
+                    Image(systemName: "questionmark.circle.fill")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.white)
+                        .frame(width: 36, height: 36)
+                        .background(
+                            Circle()
+                                .fill(.white.opacity(0.2))
+                        )
+                }
+                .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
                 
                 // Edit button (only show when there are favorites)
                 if showEdit {

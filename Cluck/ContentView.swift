@@ -11,9 +11,13 @@ import SwiftData
 struct ContentView: View {
     @State private var appState = AppState()
     @Environment(\.modelContext) private var modelContext
+    @State private var showOnboarding = !UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
     
     var body: some View {
         RootView(appState: appState)
+            .fullScreenCover(isPresented: $showOnboarding) {
+                OnboardingView(isPresented: $showOnboarding)
+            }
             .onAppear {
                 // Clean up any duplicate favorites on app launch
                 Task { @MainActor in
