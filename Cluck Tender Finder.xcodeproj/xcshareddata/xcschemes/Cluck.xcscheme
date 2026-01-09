@@ -18,7 +18,7 @@
                BlueprintIdentifier = "D8A2139D2583CBD000347F9F"
                BuildableName = "Cluck.app"
                BlueprintName = "Cluck"
-               ReferencedContainer = "container:Cluck.xcodeproj">
+               ReferencedContainer = "container:Cluck Tender Finder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -37,7 +37,7 @@
                BlueprintIdentifier = "D8A213AE2583CBD100347F9F"
                BuildableName = "CluckTests.xctest"
                BlueprintName = "CluckTests"
-               ReferencedContainer = "container:Cluck.xcodeproj">
+               ReferencedContainer = "container:Cluck Tender Finder.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -47,7 +47,7 @@
                BlueprintIdentifier = "D8A213B92583CBD100347F9F"
                BuildableName = "CluckUITests.xctest"
                BlueprintName = "CluckUITests"
-               ReferencedContainer = "container:Cluck.xcodeproj">
+               ReferencedContainer = "container:Cluck Tender Finder.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -69,7 +69,7 @@
             BlueprintIdentifier = "D8A2139D2583CBD000347F9F"
             BuildableName = "Cluck.app"
             BlueprintName = "Cluck"
-            ReferencedContainer = "container:Cluck.xcodeproj">
+            ReferencedContainer = "container:Cluck Tender Finder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
@@ -89,7 +89,7 @@
             BlueprintIdentifier = "D8A2139D2583CBD000347F9F"
             BuildableName = "Cluck.app"
             BlueprintName = "Cluck"
-            ReferencedContainer = "container:Cluck.xcodeproj">
+            ReferencedContainer = "container:Cluck Tender Finder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -296,7 +296,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Cluck" */;
+			buildConfigurationList = D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Cluck Tender Finder" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -540,7 +540,7 @@
 				DEVELOPMENT_TEAM = X28ZS48FD3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Cluck/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Cluck;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cluck: Tender Finder";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -548,7 +548,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = SAG.Cluck;
+				PRODUCT_BUNDLE_IDENTIFIER = "SAG.Cluck-TenderFinder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -566,7 +566,7 @@
 				DEVELOPMENT_TEAM = X28ZS48FD3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Cluck/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Cluck;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cluck: Tender Finder";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -574,7 +574,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = SAG.Cluck;
+				PRODUCT_BUNDLE_IDENTIFIER = "SAG.Cluck-TenderFinder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -660,7 +660,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Cluck" */ = {
+		D8A213992583CBD000347F9F /* Build configuration list for PBXProject "Cluck Tender Finder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D8A213C12583CBD100347F9F /* Debug */,
