@@ -138,7 +138,7 @@
 		D8A213952583CBD000347F9F = {
 			isa = PBXGroup;
 			children = (
-				D8A213A02583CBD000347F9F /* Cluck */,
+				D8A213A02583CBD000347F9F /* Cluck Tender Finder */,
 				D8A213BD2583CBD100347F9F /* CluckUITests */,
 				D8A2139F2583CBD000347F9F /* Products */,
 				D8B365C42F102DD2005178DA /* TenderTests.swift */,
@@ -170,7 +170,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D8A213A02583CBD000347F9F /* Cluck */ = {
+		D8A213A02583CBD000347F9F /* Cluck Tender Finder */ = {
 			isa = PBXGroup;
 			children = (
 				D8A213A12583CBD000347F9F /* CluckApp.swift */,
@@ -205,7 +205,7 @@
 				D8B3660A2F116683005178DA /* TIP_JAR_IMPLEMENTATION.md */,
 				D8B366032F1155E5005178DA /* ONBOARDING_DOCUMENTATION.md */,
 			);
-			path = Cluck;
+			path = "Cluck Tender Finder";
 			sourceTree = "<group>";
 		};
 		D8A213BD2583CBD100347F9F /* CluckUITests */ = {
@@ -536,10 +536,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Cluck/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Cluck Tender Finder/Preview Content\"";
 				DEVELOPMENT_TEAM = X28ZS48FD3;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Cluck/Info.plist;
+				INFOPLIST_FILE = "Cluck Tender Finder/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Cluck: Tender Finder";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
@@ -562,10 +562,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Cluck/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Cluck Tender Finder/Preview Content\"";
 				DEVELOPMENT_TEAM = X28ZS48FD3;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Cluck/Info.plist;
+				INFOPLIST_FILE = "Cluck Tender Finder/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Cluck: Tender Finder";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;

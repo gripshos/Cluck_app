@@ -73,7 +73,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
-         identifier = "../../Cluck/Cluck.storekit">
+         identifier = "../../Cluck Tender Finder/Cluck.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
