@@ -1,8 +1,8 @@
-# 🍗 Cluck
+# 🍗 Tendrrr
 
 **Swipe right on chicken tenders.**
 
-Cluck is a swipe-style iOS app that helps you discover nearby restaurants serving chicken tenders. Swipe through options, save your favorites, and get directions—all with a playful, modern interface designed for one-handed use.
+Tendrrr is a swipe-style iOS app that helps you discover nearby restaurants serving chicken tenders. Swipe through options, save your favorites, and get directions—all with a playful, modern interface designed for one-handed use.
 
 ![iOS 17+](https://img.shields.io/badge/iOS-17%2B-blue)
 ![SwiftUI](https://img.shields.io/badge/SwiftUI-5.0-orange)
@@ -34,7 +34,7 @@ Cluck is a swipe-style iOS app that helps you discover nearby restaurants servin
 ## Architecture
 
 ```
-Cluck/
+Tendrrr/
 ├── CluckApp.swift          # App entry point
 ├── ContentView.swift       # Main view with all components
 │   ├── Models              # Tender data model
