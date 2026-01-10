@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D81A624D2F11EB2900A05592 /* CLUCK_FIX_ACTION_PLAN.md in Resources */ = {isa = PBXBuildFile; fileRef = D81A624C2F11EB2900A05592 /* CLUCK_FIX_ACTION_PLAN.md */; };
 		D86FB26D2F0D6E9500269EFD /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB26C2F0D6E9500269EFD /* AppState.swift */; };
 		D86FB26F2F0D6E9B00269EFD /* Tender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB26E2F0D6E9B00269EFD /* Tender.swift */; };
 		D86FB2712F0D6EA300269EFD /* FavoriteRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86FB2702F0D6EA300269EFD /* FavoriteRestaurant.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D81A624C2F11EB2900A05592 /* CLUCK_FIX_ACTION_PLAN.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLUCK_FIX_ACTION_PLAN.md; sourceTree = "<group>"; };
 		D86FB26C2F0D6E9500269EFD /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D86FB26E2F0D6E9B00269EFD /* Tender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tender.swift; sourceTree = "<group>"; };
 		D86FB2702F0D6EA300269EFD /* FavoriteRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRestaurant.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			children = (
 				D8A213A12583CBD000347F9F /* CluckApp.swift */,
 				D8A213A32583CBD000347F9F /* ContentView.swift */,
+				D81A624C2F11EB2900A05592 /* CLUCK_FIX_ACTION_PLAN.md */,
 				D8A213A52583CBD100347F9F /* Assets.xcassets */,
 				D8B365C22F100B92005178DA /* cluck.icon */,
 				D8A213AA2583CBD100347F9F /* Info.plist */,
@@ -322,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8A213A62583CBD100347F9F /* Assets.xcassets in Resources */,
+				D81A624D2F11EB2900A05592 /* CLUCK_FIX_ACTION_PLAN.md in Resources */,
 				D8B365C32F100B92005178DA /* cluck.icon in Resources */,
 				D8B366042F1155E5005178DA /* ONBOARDING_DOCUMENTATION.md in Resources */,
 				D8B366102F117174005178DA /* Cluck.storekit in Resources */,

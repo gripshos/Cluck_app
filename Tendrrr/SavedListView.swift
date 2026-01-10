@@ -14,8 +14,6 @@ struct SavedListView: View {
     
     @State private var selectedTender: Tender?
     @State private var editMode: EditMode = .inactive
-    @State private var showOnboarding = false
-    @State private var showRestartTutorialConfirmation = false
     
     var body: some View {
         NavigationStack {
@@ -36,10 +34,7 @@ struct SavedListView: View {
                     // Custom Header with Edit Button
                     SavedHeader(
                         showEdit: !favorites.isEmpty,
-                        editMode: $editMode,
-                        onHelpTapped: {
-                            showRestartTutorialConfirmation = true
-                        }
+                        editMode: $editMode
                     )
                     
                     // Main Content
@@ -67,17 +62,6 @@ struct SavedListView: View {
             .sheet(item: $selectedTender) { tender in
                 ChatDetailView(tender: tender, modelContext: modelContext)
             }
-            .fullScreenCover(isPresented: $showOnboarding) {
-                OnboardingView(isPresented: $showOnboarding)
-            }
-            .alert("Restart Tutorial", isPresented: $showRestartTutorialConfirmation) {
-                Button("Cancel", role: .cancel) {}
-                Button("Show Tutorial") {
-                    showOnboarding = true
-                }
-            } message: {
-                Text("Would you like to see the app tutorial again?")
-            }
         }
     }
     
@@ -94,84 +78,51 @@ struct SavedListView: View {
 struct SavedHeader: View {
     let showEdit: Bool
     @Binding var editMode: EditMode
-    let onHelpTapped: () -> Void
+    @State private var showTutorialAlert = false
+    @State private var showTutorial = false
     
     var body: some View {
-        ZStack {
-            // Vibrant gradient background matching the Saved tab theme
-            LinearGradient(
-                colors: [
-                    Color(red: 1.0, green: 0.2, blue: 0.4),
-                    Color(red: 1.0, green: 0.3, blue: 0.45)
-                ],
-                startPoint: .leading,
-                endPoint: .trailing
-            )
+        HStack(spacing: 12) {
+            // Heart icon
+            Image(systemName: "heart.fill")
+                .font(.system(size: 28))
+                .foregroundStyle(.white)
+                .shadow(color: .black.opacity(0.15), radius: 2, x: 0, y: 1)
             
-            HStack(spacing: 12) {
-                // Heart icon
-                Image(systemName: "heart.fill")
-                    .font(.system(size: 28))
-                    .foregroundStyle(.white)
-                    .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
-                
-                // Styled tab title
-                Text("Saved")
-                    .font(.system(size: 34, weight: .bold, design: .rounded))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [.white, .white.opacity(0.9)],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
-                    )
-                    .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
-                
-                Spacer()
-                
-                // Help button (always visible)
-                Button(action: onHelpTapped) {
-                    Image(systemName: "questionmark.circle.fill")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white)
-                        .frame(width: 36, height: 36)
-                        .background(
-                            Circle()
-                                .fill(.white.opacity(0.2))
-                        )
-                }
-                .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
-                
-                // Edit button (only show when there are favorites)
-                if showEdit {
-                    Button(action: {
-                        withAnimation {
-                            if editMode == .active {
-                                editMode = .inactive
-                            } else {
-                                editMode = .active
-                            }
-                        }
-                    }) {
-                        Text(editMode == .active ? "Done" : "Edit")
-                            .font(.body)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.white)
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 8)
-                            .background(
-                                Capsule()
-                                    .fill(.white.opacity(0.2))
-                            )
+            // Styled tab title
+            Text("Saved")
+                .font(.system(size: 32, weight: .bold, design: .rounded))
+                .foregroundStyle(.white)
+                .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 1)
+            
+            Spacer()
+            
+            // Tutorial button
+            HeaderIconButton(systemImage: "questionmark.circle.fill") {
+                showTutorialAlert = true
+            }
+            
+            // Edit button (only show when there are favorites)
+            if showEdit {
+                HeaderTextButton(title: editMode == .active ? "Done" : "Edit") {
+                    withAnimation {
+                        editMode = editMode == .active ? .inactive : .active
                     }
-                    .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
                 }
             }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 12)
         }
-        .frame(height: 70)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 16)
+        .padding(.top, 8)
+        .confirmationDialog("Tutorial", isPresented: $showTutorialAlert, titleVisibility: .hidden) {
+            Button("Show Tutorial") {
+                showTutorial = true
+            }
+            Button("Cancel", role: .cancel) { }
+        }
+        .sheet(isPresented: $showTutorial) {
+            Text("Tutorial")
+        }
     }
 }
 

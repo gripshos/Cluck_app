@@ -13,10 +13,18 @@ struct SwipeDeckView: View {
     let modelContext: ModelContext
     let storeKitService: StoreKitService
     
+    // Query for saved favorites
+    @Query private var savedFavorites: [FavoriteRestaurant]
+    
     @State private var dragAmount = CGSize.zero
-    @State private var selectedTender: Tender?
-    @State private var hasTriggeredHaptic = false
+    @State private var showDetail = false
     @State private var showSettings = false
+    @State private var selectedTender: Tender?
+    
+    // Computed property to get saved restaurant names
+    private var savedRestaurantNames: Set<String> {
+        Set(savedFavorites.map { $0.name })
+    }
     
     var body: some View {
         NavigationStack {
@@ -24,7 +32,7 @@ struct SwipeDeckView: View {
                 // Background gradient that extends to the top safe area
                 LinearGradient(
                     colors: [
-                        Color(red: 1.0, green: 0.3, blue: 0.2), // #FF4C33
+                        Color(red: 1.0, green: 0.3, blue: 0.2),
                         Color(red: 1.0, green: 0.4, blue: 0.3),
                         Color(red: 1.0, green: 0.6, blue: 0.4),
                         Color(red: 1.0, green: 0.8, blue: 0.5)
@@ -35,131 +43,59 @@ struct SwipeDeckView: View {
                 .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
-                    // Custom Header with Logo and Title (hide when loading)
-                    if !viewModel.isLoading {
-                        CluckHeader(
-                            onRefresh: {
-                                Task {
-                                    await viewModel.loadRestaurants()
-                                }
-                            },
-                            onSettings: {
-                                showSettings = true
-                            }
-                        )
-                        .transition(.move(edge: .top).combined(with: .opacity))
-                    }
-                    
-                    // Main Content
-                    ZStack {
-                    
-                    if viewModel.isLoading {
-                        EmptyStateView.searching
-                    } else if let errorMessage = viewModel.errorMessage {
-                        if errorMessage.contains("location") {
-                            EmptyStateView.locationDenied
-                        } else if errorMessage.contains("already in your saved list") {
-                            // All restaurants are already saved
-                            VStack(spacing: 20) {
-                                Text("🎉")
-                                    .font(.system(size: 80))
-                                Text("All Done!")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.white)
-                                Text("You've saved all nearby restaurants.\nCheck your Saved list or try again later!")
-                                    .font(.body)
-                                    .foregroundStyle(.white.opacity(0.9))
-                                    .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 40)
-                                
-                                Button {
-                                    Task {
-                                        await viewModel.loadRestaurants()
-                                    }
-                                } label: {
-                                    Text("Refresh")
-                                        .font(.headline)
-                                        .foregroundStyle(.white)
-                                        .padding(.horizontal, 30)
-                                        .padding(.vertical, 12)
-                                        .background(
-                                            Capsule()
-                                                .fill(.white.opacity(0.25))
-                                        )
-                                }
-                            }
-                        } else {
-                            EmptyStateView.networkError(onRetry: {
-                                Task {
-                                    await viewModel.loadRestaurants()
-                                }
-                            })
-                        }
-                    } else if viewModel.tenders.isEmpty {
-                        EmptyStateView.noRestaurantsFound(onRetry: {
+                    // Custom Header with Logo and Title
+                    CluckHeader(
+                        onRefresh: {
                             Task {
-                                await viewModel.loadRestaurants()
+                                await viewModel.loadRestaurants(excluding: savedRestaurantNames)
                             }
-                        })
-                    } else {
-                        VStack {
-                            // Undo button (only visible when there's a last swiped restaurant)
-                            if viewModel.lastSwipedRestaurant != nil {
-                                HStack {
-                                    Spacer()
-                                    Button {
-                                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                            viewModel.undoLastSwipe()
-                                        }
-                                    } label: {
-                                        HStack(spacing: 6) {
-                                            Image(systemName: "arrow.uturn.backward")
-                                                .font(.subheadline)
-                                            Text("Undo")
-                                                .font(.subheadline)
-                                                .fontWeight(.medium)
-                                        }
-                                        .foregroundStyle(.white)
-                                        .padding(.horizontal, 16)
-                                        .padding(.vertical, 8)
-                                        .background(
-                                            Capsule()
-                                                .fill(.white.opacity(0.25))
-                                        )
-                                    }
-                                    .padding(.trailing)
-                                    .transition(.move(edge: .trailing).combined(with: .opacity))
-                                }
-                                .padding(.top, 8)
-                            }
-                            
-                            Spacer()
+                        },
+                        onSettings: {
+                            showSettings = true
                         }
-                        .zIndex(10)
+                    )
+                    
+                    // Main Content with smooth transitions
+                    ZStack {
+                        // Loading State
+                        if viewModel.isLoading {
+                            loadingView
+                                .transition(.opacity)
+                        }
                         
-                        // Card deck with proper sizing
-                        GeometryReader { geometry in
-                            ZStack {
-                                // Render up to 3 cards with stacking effect
-                                ForEach(Array(viewModel.tenders.prefix(3).enumerated().reversed()), id: \.element.id) { index, tender in
-                                    cardView(for: tender, at: index, in: geometry)
-                                }
-                            }
+                        // Error State
+                        if let errorMessage = viewModel.errorMessage, !viewModel.isLoading {
+                            errorView(message: errorMessage)
+                                .transition(.opacity)
+                        }
+                        
+                        // Empty State
+                        if viewModel.tenders.isEmpty && !viewModel.isLoading && viewModel.errorMessage == nil {
+                            emptyView
+                                .transition(.opacity)
+                        }
+                        
+                        // Cards - only show when we have data and not loading
+                        if !viewModel.tenders.isEmpty && !viewModel.isLoading {
+                            cardDeckView
+                                .transition(.opacity.combined(with: .scale(scale: 0.95)))
                         }
                     }
+                    .animation(.easeInOut(duration: 0.3), value: viewModel.isLoading)
+                    .animation(.easeInOut(duration: 0.3), value: viewModel.tenders.isEmpty)
+                    .animation(.easeInOut(duration: 0.3), value: viewModel.errorMessage != nil)
                 }
-            }
-            // Close the VStack
             }
             .navigationBarHidden(true)
             .task {
                 if viewModel.tenders.isEmpty && !viewModel.isLoading {
-                    await viewModel.loadRestaurants()
+                    await viewModel.loadRestaurants(excluding: savedRestaurantNames)
                 }
             }
-            .sheet(item: $selectedTender) { tender in
-                ChatDetailView(tender: tender, modelContext: modelContext)
+            .sheet(isPresented: $showDetail) {
+                if let selectedTender {
+                    ChatDetailView(tender: selectedTender, modelContext: modelContext)
+                }
             }
             .sheet(isPresented: $showSettings) {
                 SettingsView(storeKitService: storeKitService)
@@ -167,201 +103,171 @@ struct SwipeDeckView: View {
         }
     }
     
-    @ViewBuilder
-    private func cardView(for tender: Tender, at index: Int, in geometry: GeometryProxy) -> some View {
-        let cardContent = ZStack {
-            TenderCardView(tender: tender, userLocation: viewModel.userLocation)
-            
-            // Like/Nope overlay (only on top card)
-            if index == 0 {
-                SwipeOverlayView(dragAmount: dragAmount)
-            }
+    // MARK: - Extracted Views for Clean Transitions
+    
+    private var loadingView: some View {
+        VStack(spacing: 20) {
+            ProgressView()
+                .scaleEffect(1.5)
+                .tint(.white)
+            Text("Finding restaurants...")
+                .font(.headline)
+                .foregroundStyle(.white)
         }
-        .frame(
-            width: geometry.size.width - 40,
-            height: min(geometry.size.height * 0.7, 600)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    private func errorView(message: String) -> some View {
+        ContentUnavailableView(
+            "Unable to Find Restaurants",
+            systemImage: "fork.knife.circle",
+            description: Text(message)
         )
-        .scaleEffect(1.0 - (Double(index) * 0.05))
-        .offset(y: CGFloat(index) * 8)
-        .position(
-            x: geometry.size.width / 2 + (index == 0 ? dragAmount.width : 0),
-            y: geometry.size.height / 2 + (index == 0 ? dragAmount.height * 0.4 : 0)
+        .foregroundStyle(.white)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    private var emptyView: some View {
+        ContentUnavailableView(
+            "No Restaurants Found",
+            systemImage: "fork.knife.circle",
+            description: Text("Try adjusting your location or search radius")
         )
-        .rotationEffect(.degrees(index == 0 ? Double(dragAmount.width / 20) : 0))
-        .zIndex(Double(3 - index))
-        .allowsHitTesting(index == 0)
-        .onTapGesture {
-            if index == 0 {
-                selectedTender = tender
-            }
-        }
-        
-        if index == 0 {
-            cardContent
-                .gesture(
-                    DragGesture()
-                        .onChanged { gesture in
-                            dragAmount = gesture.translation
-                            
-                            // Trigger haptic feedback when crossing threshold
-                            let threshold: CGFloat = 100
-                            if abs(gesture.translation.width) > threshold && !hasTriggeredHaptic {
-                                let impact = UIImpactFeedbackGenerator(style: .medium)
-                                impact.impactOccurred()
-                                hasTriggeredHaptic = true
-                            } else if abs(gesture.translation.width) <= threshold {
-                                hasTriggeredHaptic = false
+        .foregroundStyle(.white)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    private var cardDeckView: some View {
+        GeometryReader { geometry in
+            ZStack {
+                // Show up to 2 cards - the next card sits behind, pre-rendered but scaled down
+                // Using prefix(2) and reversed() to stack them correctly (last one at bottom)
+                ForEach(Array(viewModel.tenders.prefix(2).enumerated().reversed()), id: \.element.id) { index, tender in
+                    let isTopCard = index == 0
+                    
+                    ZStack {
+                        TenderCardView(tender: tender)
+                        if isTopCard {
+                            SwipeOverlayView(dragAmount: dragAmount)
+                        }
+                    }
+                    .frame(
+                        width: geometry.size.width - 40,
+                        height: min(geometry.size.height * 0.7, 600)
+                    )
+                    .position(
+                        x: geometry.size.width / 2 + (isTopCard ? dragAmount.width : 0),
+                        y: geometry.size.height / 2 + (isTopCard ? dragAmount.height * 0.4 : 0)
+                    )
+                    .rotationEffect(.degrees(isTopCard ? Double(dragAmount.width / 20) : 0))
+                    .scaleEffect(isTopCard ? 1.0 : 0.95)
+                    .opacity(isTopCard ? 1.0 : 0.5)
+                    .allowsHitTesting(isTopCard) // Only top card responds to gestures
+                    .zIndex(isTopCard ? 1 : 0)
+                    .id(tender.id) // Stable identity to prevent re-renders
+                    .gesture(isTopCard ?
+                        DragGesture()
+                            .onChanged { gesture in
+                                dragAmount = gesture.translation
                             }
+                            .onEnded { gesture in
+                                handleSwipe(gesture: gesture, tender: tender)
+                            }
+                        : nil
+                    )
+                    .onTapGesture {
+                        if isTopCard {
+                            selectedTender = tender
+                            showDetail = true
                         }
-                        .onEnded { gesture in
-                            handleSwipe(gesture: gesture, tender: tender)
-                            hasTriggeredHaptic = false
-                        }
-                )
-        } else {
-            cardContent
+                    }
+                }
+            }
         }
     }
     
     private func handleSwipe(gesture: DragGesture.Value, tender: Tender) {
         let threshold: CGFloat = 100
         
-        withAnimation {
-            if gesture.translation.width > threshold {
-                // Swipe right - save
-                saveTender(tender)
+        if gesture.translation.width > threshold {
+            // Swipe right - save
+            withAnimation(.easeOut(duration: 0.3)) {
                 dragAmount = CGSize(width: 500, height: 0)
-                
-                // Success haptic feedback
-                let notification = UINotificationFeedbackGenerator()
-                notification.notificationOccurred(.success)
-            } else if gesture.translation.width < -threshold {
-                // Swipe left - skip
-                dragAmount = CGSize(width: -500, height: 0)
-                
-                // Success haptic feedback
-                let notification = UINotificationFeedbackGenerator()
-                notification.notificationOccurred(.success)
-            } else {
-                // Return to center
-                dragAmount = .zero
-                
-                // Light haptic feedback for snap back
-                let light = UIImpactFeedbackGenerator(style: .light)
-                light.impactOccurred()
             }
-        }
-        
-        // Remove card after animation
-        if abs(gesture.translation.width) > threshold {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                withAnimation {
+            
+            // Delay the save and removal to let animation complete
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                saveTender(tender)
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                    viewModel.removeTopCard()
+                    dragAmount = .zero
+                }
+            }
+        } else if gesture.translation.width < -threshold {
+            // Swipe left - skip
+            withAnimation(.easeOut(duration: 0.3)) {
+                dragAmount = CGSize(width: -500, height: 0)
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                     viewModel.removeTopCard()
                     dragAmount = .zero
                 }
             }
         } else {
-            withAnimation {
+            // Return to center
+            withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
                 dragAmount = .zero
             }
         }
     }
     
     private func saveTender(_ tender: Tender) {
-        // Check if already saved to prevent duplicates
-        let descriptor = FetchDescriptor<FavoriteRestaurant>(
-            predicate: #Predicate { $0.id == tender.id }
-        )
+        let favorite = FavoriteRestaurant(from: tender)
+        modelContext.insert(favorite)
+        try? modelContext.save()
         
-        do {
-            let existing = try modelContext.fetch(descriptor)
-            
-            if existing.isEmpty {
-                // Only save if not already in favorites
-                let favorite = FavoriteRestaurant(from: tender)
-                modelContext.insert(favorite)
-                try modelContext.save()
-                print("✅ Saved: \(tender.name)")
-            } else {
-                // Already exists, skip saving
-                print("ℹ️ Already saved: \(tender.name)")
-            }
-        } catch {
-            print("❌ Error checking/saving favorite: \(error)")
-        }
+        // Remove from deck to prevent showing again
+        viewModel.removeFromDeck(named: tender.name)
     }
 }
 
-// MARK: - Custom Header Component
+// MARK: - CluckHeader
 
 struct CluckHeader: View {
     let onRefresh: () -> Void
     let onSettings: () -> Void
+    @State private var showTutorial = false
     
     var body: some View {
-        ZStack {
-            // Vibrant gradient background - using #FF4C33 as base
-            LinearGradient(
-                colors: [
-                    Color(red: 1.0, green: 0.3, blue: 0.2), // #FF4C33
-                    Color(red: 1.0, green: 0.4, blue: 0.3)
-                ],
-                startPoint: .leading,
-                endPoint: .trailing
-            )
+        HStack(spacing: 12) {
+            // Chicken emoji icon
+            Text("🍗")
+                .font(.system(size: 36))
+                .shadow(color: .black.opacity(0.15), radius: 2, x: 0, y: 1)
             
-            HStack(spacing: 12) {
-                // Chicken emoji icon
-                Text("🍗")
-                    .font(.system(size: 40))
-                    .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
-                
-                // Styled app title
-                Text("Cluck")
-                    .font(.system(size: 34, weight: .bold, design: .rounded))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [.white, .white.opacity(0.9)],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
-                    )
-                    .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
-                
-                Spacer()
-                
-                // Settings button
-                Button(action: onSettings) {
-                    Image(systemName: "gearshape.fill")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white)
-                        .frame(width: 44, height: 44)
-                        .background(
-                            Circle()
-                                .fill(.white.opacity(0.2))
-                        )
-                }
-                .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
-                
-                // Refresh button
-                Button(action: onRefresh) {
-                    Image(systemName: "arrow.clockwise")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white)
-                        .frame(width: 44, height: 44)
-                        .background(
-                            Circle()
-                                .fill(.white.opacity(0.2))
-                        )
-                }
-                .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+            // Styled app title
+            Text("Cluck")
+                .font(.system(size: 32, weight: .bold, design: .rounded))
+                .foregroundStyle(.white)
+                .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 1)
+            
+            Spacer()
+            
+            // Settings button
+            HeaderIconButton(systemImage: "gearshape.fill") {
+                onSettings()
             }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 12)
+            
+            // Refresh button
+            HeaderIconButton(systemImage: "arrow.clockwise") {
+                onRefresh()
+            }
         }
-        .frame(height: 70)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 16)
+        .padding(.top, 8)
     }
 }
 
@@ -441,6 +347,43 @@ struct SwipeOverlayView: View {
     }
 }
 
+// MARK: - Component Definitions
+// Moved here to ensure they are available in scope without project file modifications
 
+struct HeaderIconButton: View {
+    let systemImage: String
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: systemImage)
+                .font(.system(size: 18, weight: .semibold))
+                .foregroundStyle(.white.opacity(0.9))
+                .frame(width: 40, height: 40)
+                .background(
+                    Circle()
+                        .fill(.white.opacity(0.15))
+                )
+        }
+    }
+}
 
+struct HeaderTextButton: View {
+    let title: String
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+                .font(.system(size: 15, weight: .semibold))
+                .foregroundStyle(.white)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
+                .background(
+                    Capsule()
+                        .fill(.white.opacity(0.15))
+                )
+        }
+    }
+}
 

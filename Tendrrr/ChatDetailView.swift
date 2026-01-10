@@ -14,7 +14,6 @@ struct ChatDetailView: View {
     let modelContext: ModelContext
     
     @Environment(\.dismiss) private var dismiss
-    @State private var isFavorite = false
     
     var body: some View {
         ScrollView {
@@ -102,7 +101,7 @@ struct ChatDetailView: View {
                         if let isOpenNow = tender.isOpenNow {
                             HStack(spacing: 6) {
                                 Image(systemName: "clock.fill")
-                                    .font(.subheadline)
+                                .font(.subheadline)
                                 Text(isOpenNow ? "Open Now" : "Closed")
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
@@ -295,38 +294,9 @@ struct ChatDetailView: View {
                                     .cornerRadius(10)
                             }
                         }
-                        
-                        Divider()
-                        
-                        // Save/Unsave button
-                        Button {
-                            toggleFavorite()
-                        } label: {
-                            Label(
-                                isFavorite ? "Remove from Favorites" : "Save to Favorites",
-                                systemImage: isFavorite ? "heart.slash.fill" : "heart.fill"
-                            )
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(
-                                LinearGradient(
-                                    colors: isFavorite ? 
-                                        [Color.red, Color.red.opacity(0.8)] :
-                                        [Color(red: 1.0, green: 0.3, blue: 0.2), Color(red: 1.0, green: 0.5, blue: 0.3)],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
-                            .foregroundStyle(.white)
-                            .cornerRadius(10)
-                            .fontWeight(.semibold)
-                        }
                     }
                     .padding()
                 }
-            }
-            .onAppear {
-                checkIfFavorite()
             }
         }
         .overlay(alignment: .topTrailing) {
@@ -367,59 +337,6 @@ struct ChatDetailView: View {
         let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = tender.name
         mapItem.openInMaps(launchOptions: nil)
-    }
-    
-    private func checkIfFavorite() {
-        let descriptor = FetchDescriptor<FavoriteRestaurant>(
-            predicate: #Predicate { $0.id == tender.id }
-        )
-        
-        do {
-            let results = try modelContext.fetch(descriptor)
-            isFavorite = !results.isEmpty
-        } catch {
-            print("Error checking favorite status: \(error)")
-        }
-    }
-    
-    private func toggleFavorite() {
-        let descriptor = FetchDescriptor<FavoriteRestaurant>(
-            predicate: #Predicate { $0.id == tender.id }
-        )
-        
-        do {
-            let results = try modelContext.fetch(descriptor)
-            
-            if let existing = results.first {
-                // Remove from favorites
-                modelContext.delete(existing)
-                isFavorite = false
-                print("🗑️ Removed from favorites: \(tender.name)")
-            } else {
-                // Double-check: verify no duplicates before adding
-                // This prevents race conditions from multiple sessions
-                let verifyDescriptor = FetchDescriptor<FavoriteRestaurant>(
-                    predicate: #Predicate { $0.id == tender.id }
-                )
-                let verifyResults = try modelContext.fetch(verifyDescriptor)
-                
-                if verifyResults.isEmpty {
-                    // Safe to add - no duplicates found
-                    let favorite = FavoriteRestaurant(from: tender)
-                    modelContext.insert(favorite)
-                    isFavorite = true
-                    print("✅ Added to favorites: \(tender.name)")
-                } else {
-                    // Duplicate detected, just update UI state
-                    isFavorite = true
-                    print("ℹ️ Already in favorites (duplicate prevented): \(tender.name)")
-                }
-            }
-            
-            try modelContext.save()
-        } catch {
-            print("❌ Error toggling favorite: \(error)")
-        }
     }
 }
 

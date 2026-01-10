@@ -72,8 +72,7 @@ struct RootView: View {
                             .onAppear {
                                 viewModel = TenderDeckViewModel(
                                     searchService: appState.searchService,
-                                    locationManager: appState.locationManager,
-                                    modelContext: modelContext
+                                    locationManager: appState.locationManager
                                 )
                             }
                     }
@@ -97,8 +96,7 @@ struct RootView: View {
                         .onAppear {
                             viewModel = TenderDeckViewModel(
                                 searchService: appState.searchService,
-                                locationManager: appState.locationManager,
-                                modelContext: modelContext
+                                locationManager: appState.locationManager
                             )
                         }
                 }

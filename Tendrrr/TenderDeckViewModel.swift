@@ -16,23 +16,16 @@ class TenderDeckViewModel {
     var tenders: [Tender] = []
     var isLoading = false
     var errorMessage: String?
-    var lastSwipedRestaurant: Tender?
     
     private let searchService: RestaurantSearchService
     private let locationManager: LocationManager
-    private let modelContext: ModelContext
     
-    var userLocation: CLLocation? {
-        locationManager.location
-    }
-    
-    init(searchService: RestaurantSearchService, locationManager: LocationManager, modelContext: ModelContext) {
+    init(searchService: RestaurantSearchService, locationManager: LocationManager) {
         self.searchService = searchService
         self.locationManager = locationManager
-        self.modelContext = modelContext
     }
     
-    func loadRestaurants() async {
+    func loadRestaurants(excluding savedNames: Set<String> = []) async {
         guard let location = locationManager.location else {
             errorMessage = "Unable to get your location"
             return
@@ -43,19 +36,18 @@ class TenderDeckViewModel {
         
         do {
             let allTenders = try await searchService.searchNearbyRestaurants(near: location)
-            print("📥 Fetched \(allTenders.count) restaurants from API")
             
             // Filter out restaurants that are already saved
-            tenders = filterUnsavedRestaurants(from: allTenders)
-            print("✅ After filtering: \(tenders.count) unsaved restaurants")
+            // Use lowercased comparison for case-insensitive matching
+            let lowercasedSavedNames = Set(savedNames.map { $0.lowercased() })
+            tenders = allTenders.filter { tender in
+                !lowercasedSavedNames.contains(tender.name.lowercased())
+            }
             
-            if tenders.isEmpty {
-                // Check if we filtered everything out
-                if !allTenders.isEmpty {
-                    errorMessage = "All nearby restaurants are already in your saved list"
-                } else {
-                    errorMessage = "No restaurants found nearby"
-                }
+            if tenders.isEmpty && !allTenders.isEmpty {
+                errorMessage = "You've saved all nearby restaurants! 🎉"
+            } else if tenders.isEmpty {
+                errorMessage = "No restaurants found nearby"
             }
         } catch {
             errorMessage = "Failed to load restaurants: \(error.localizedDescription)"
@@ -66,44 +58,11 @@ class TenderDeckViewModel {
     
     func removeTopCard() {
         guard !tenders.isEmpty else { return }
-        lastSwipedRestaurant = tenders.first
         tenders.removeFirst()
     }
     
-    func undoLastSwipe() {
-        guard let lastSwiped = lastSwipedRestaurant else { return }
-        tenders.insert(lastSwiped, at: 0)
-        lastSwipedRestaurant = nil
-    }
-    
-    // MARK: - Private Helpers
-    
-    /// Filters out restaurants that are already in the saved favorites
-    private func filterUnsavedRestaurants(from restaurants: [Tender]) -> [Tender] {
-        // Fetch all saved restaurant IDs
-        let descriptor = FetchDescriptor<FavoriteRestaurant>()
-        guard let savedRestaurants = try? modelContext.fetch(descriptor) else {
-            print("⚠️ Could not fetch saved restaurants for filtering")
-            return restaurants
-        }
-        
-        let savedIDs = Set(savedRestaurants.map { $0.id })
-        print("🔍 Checking against \(savedIDs.count) saved restaurants")
-        
-        // Filter out any restaurant whose ID is in the saved list
-        let filtered = restaurants.filter { tender in
-            let isAlreadySaved = savedIDs.contains(tender.id)
-            if isAlreadySaved {
-                print("⏭️ Skipping '\(tender.name)' - already saved")
-            }
-            return !isAlreadySaved
-        }
-        
-        let removedCount = restaurants.count - filtered.count
-        if removedCount > 0 {
-            print("🗑️ Filtered out \(removedCount) already-saved restaurant(s)")
-        }
-        
-        return filtered
+    /// Remove a specific restaurant from the deck (used when saving)
+    func removeFromDeck(named restaurantName: String) {
+        tenders.removeAll { $0.name.lowercased() == restaurantName.lowercased() }
     }
 }
